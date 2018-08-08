@@ -9,28 +9,6 @@
         <link type="test/css" rel="Stylesheet" href="style.css" />
     </asp:ContentPlaceHolder>
 
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript" language="javascript">
-        google.load("jquery", "1.3");
-    </script>
-    <script type="text/javascript">
-        $(function () {
-            $("#gotop").click(function () {
-                jQuery("html,body").animate({
-                    scrollTop: 0
-                }, 1000);
-            });
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 300) {
-                    $('#gotop').fadeIn("fast");
-                } else {
-                    $('#gotop').stop().fadeOut("fast");
-                }
-            });
-        });
-    </script>
-
-
     <style type="text/css">
         * {
             margin: 10;
@@ -68,138 +46,90 @@
             height: 162px;
         }
     </style>
-    <script type="text/javascript">
-        var timer = null;
-
-        function onSecondDelay() {
-            clearTimeout(timer);
-            timer = setTimeout('chgdiv(0, 5)', 1000);
-        }
-        function onSecondDelay2() {
-            clearTimeout(timer);
-            timer = setTimeout('chgdiv(0, 5)', 0);
-        }
-        function chgdiv(n, m) {
-            clearTimeout(timer);
-            for (var i = 1; i <= m; i++) {
-                if (i == n)
-                    document.getElementById("div" + i).style.display = "";
-                else
-                    document.getElementById("div" + i).style.display = "none";
-            }
-        }
-    </script>
+  
 </head>
-<body background="image/starwars(test).jpg" style="background-repeat:no-repeat;">
+<body background="image/starwars(test).jpg" style="background-repeat: no-repeat;">
     <form id="form1" runat="server">
 
-        <div id="gotop" style="display: none;
-        position: fixed;
-        right: 20px;
-        bottom: 20px;    
-        padding: 10px 15px;    
-        font-size: 20px;
-        background: #777;
-        color: white;
-        cursor: pointer;">˄</div>
-
-        <script type="text/javascript"
-            src="http://newsweek.shu.edu.tw:8080/lmcsilver20121007/wz_tooltip/wz_tooltip.js"></script>
-        <script type="text/javascript"
-            src="http://newsweek.shu.edu.tw:8080/lmcsilver20121007/tip_balloon/tip_balloon.js"></script>
-        
+        <div id="gotop" style="display: none; position: fixed; right: 20px; bottom: 20px; padding: 10px 15px; font-size: 20px; background: #777; color: white; cursor: pointer;">
+            ˄
+        </div>
         <table class="style1" align="center">
             <tr>
                 <td class="style13">
                     <center>
                         <Bewise:FlashControl ID="FlashControl1" runat="server" Height="150px" MovieUrl="~/image/title.swf" Loop="True" Width="1000px" />
                     </center>
-                    <%--<asp:Image ID="Image1" runat="server" ImageUrl="~/image/image88.jpg" Height="150px"
-                    Width="100%" />--%>
                 </td>
             </tr>
-            <%--<tr>
-                <td align="right">
-                    <asp:LinkButton ID="LinkButton_Create" runat="server"
-                        PostBackUrl="~/Create Account.aspx">註冊</asp:LinkButton>
-                    &nbsp;
-                    <asp:LinkButton ID="LinkButton_Login" runat="server"
-                        OnClick="LinkButton_Login_Click">登入</asp:LinkButton>
-                    &nbsp;&nbsp;
-                    <asp:LinkButton ID="LinkButton_Help" runat="server"
-                        OnClick="LinkButton_Help_Click" PostBackUrl="~/help.aspx">幫助</asp:LinkButton>
-                </td>
-            </tr>--%>
-            <tr>
-                <td>
-                    <table width="100%">
-                        <tr>
-                            <td width="32%">
-                            </td>
-                            <td>
-                                <asp:Menu ID="Menu1" runat="server" BackColor="#FFFF33" Font-Bold="True" DynamicHorizontalOffset="2"
-                                    Font-Names="Verdana" Font-Size="Large" ForeColor="#006699" Orientation="Horizontal"
-                                    StaticSubMenuIndent="10px">
-                                    <DynamicHoverStyle BackColor="#AAAAAA" ForeColor="White" />
-                                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                                    <DynamicMenuStyle BackColor="#AAAAAA" />
-                                    <DynamicSelectedStyle BackColor="#AAAAAA" />
-                                    <Items>
-                                        <asp:MenuItem NavigateUrl="~/FirstPage.aspx" Text="　　首頁" Value="首頁"></asp:MenuItem>
-                                        <asp:MenuItem Text="　分享區" Value="分享區">
-                                            <asp:MenuItem NavigateUrl="~/電影版.aspx" Text="電影版　　　" Value="電影版"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Download.aspx" Text="影音下載　　" Value="Download"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Select.aspx" Text="文章搜尋　　" Value="文章搜尋"></asp:MenuItem>
-                                        </asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/bulletin.aspx" Text="　　公告" Value="公告"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/help.aspx" Text="　幫助" Value="幫助"></asp:MenuItem>
-                                        <asp:MenuItem NavigateUrl="~/Login.aspx" Text="會員登入" Value="會員登入"></asp:MenuItem>
-                                        <asp:MenuItem Text="會員專區" Value="會員專區">
-                                            <asp:MenuItem NavigateUrl="~/password.aspx" Text="修改密碼　　" Value="修改密碼"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Update.aspx" Text="會員資料　　" Value="會員資料"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Share.aspx" Text="影音上傳　　" Value="Share"></asp:MenuItem>
-                                            <asp:MenuItem NavigateUrl="~/Out.aspx" Text="會員登出　　" Value="會員登出"></asp:MenuItem>
-                                        </asp:MenuItem>
-                                    </Items>
-                                    <StaticHoverStyle BackColor="#AAAAAA" ForeColor="White" />
-                                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" Width="100px" />
-                                    <StaticSelectedStyle BackColor="#AAAAAA" />
-                                </asp:Menu>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <table width="100%">
-                        <tr>
-                            <td class="style10"></td>
-                            <td valign="top" class="style11" width="100%">
-                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                                    
-                                    <p>
-                                        &nbsp;
-                                    </p>
-                                </asp:ContentPlaceHolder>
+                <tr>
+                    <td>
+                        <table width="100%">
+                            <tr>
+                                <td width="32%"></td>
+                                <td>
+                                    <asp:Menu ID="Menu1" runat="server" BackColor="#FFFF33" Font-Bold="True" DynamicHorizontalOffset="2"
+                                        Font-Names="Verdana" Font-Size="Large" ForeColor="#006699" Orientation="Horizontal"
+                                        StaticSubMenuIndent="10px">
+                                        <DynamicHoverStyle BackColor="#AAAAAA" ForeColor="White" />
+                                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                        <DynamicMenuStyle BackColor="#AAAAAA" />
+                                        <DynamicSelectedStyle BackColor="#AAAAAA" />
+                                        <Items>
+                                            <asp:MenuItem NavigateUrl="~/FirstPage.aspx" Text="　　首頁" Value="首頁"></asp:MenuItem>
+                                            <asp:MenuItem Text="　分享區" Value="分享區">
+                                                <asp:MenuItem NavigateUrl="~/電影版.aspx" Text="電影版　　　" Value="電影版"></asp:MenuItem>
+                                                <asp:MenuItem NavigateUrl="~/Download.aspx" Text="影音下載　　" Value="Download"></asp:MenuItem>
+                                                <asp:MenuItem NavigateUrl="~/Select.aspx" Text="文章搜尋　　" Value="文章搜尋"></asp:MenuItem>
+                                            </asp:MenuItem>
+                                            <asp:MenuItem NavigateUrl="~/bulletin.aspx" Text="　　公告" Value="公告"></asp:MenuItem>
+                                            <asp:MenuItem NavigateUrl="~/help.aspx" Text="　幫助" Value="幫助"></asp:MenuItem>
+                                            <asp:MenuItem NavigateUrl="~/Login.aspx" Text="會員登入" Value="會員登入"></asp:MenuItem>
+                                            <asp:MenuItem Text="會員專區" Value="會員專區">
+                                                <asp:MenuItem NavigateUrl="~/password.aspx" Text="修改密碼　　" Value="修改密碼"></asp:MenuItem>
+                                                <asp:MenuItem NavigateUrl="~/Update.aspx" Text="會員資料　　" Value="會員資料"></asp:MenuItem>
+                                                <asp:MenuItem NavigateUrl="~/Share.aspx" Text="影音上傳　　" Value="Share"></asp:MenuItem>
+                                                <asp:MenuItem NavigateUrl="~/Out.aspx" Text="會員登出　　" Value="會員登出"></asp:MenuItem>
+                                            </asp:MenuItem>
+                                        </Items>
+                                        <StaticHoverStyle BackColor="#AAAAAA" ForeColor="White" />
+                                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" Width="100px" />
+                                        <StaticSelectedStyle BackColor="#AAAAAA" />
+                                    </asp:Menu>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="100%">
+                            <tr>
+                                <td class="style10"></td>
+                                <td valign="top" class="style11" width="100%">
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h6 class="style12">
-                        <strong>
-                            <marquee behavior="altemate"style="width: 1463px">
-         <img src="image/pkchou.png" width="70" height="60"/><font face="DFPCraftYu-W7" size="6" color="#339966">本專題由李亞儒、薛米奇、蘇文豪、唐諺平、范嘉崴、林賜壹、薛翔駿、楊翔宇聯合製作</font><img src="image/pkchou2.png" width="70" height="60"> 
+                                        <p>
+                                            &nbsp;
+                                        </p>
+                                    </asp:ContentPlaceHolder>
 
-    </marquee>
-                        </strong>
-                    </h6>
-                </td>
-            </tr>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h6 class="style12">
+                            <strong>
+                                <marquee behavior="altemate" style="width: 1463px">
+                                    <img src="image/pkchou.png" width="70" height="60"/><font face="DFPCraftYu-W7" size="6" color="#339966">本專題由李亞儒、薛米奇、蘇文豪、唐諺平、范嘉崴、林賜壹、薛翔駿、楊翔宇聯合製作</font><img src="image/pkchou2.png" width="70" height="60"> 
+                             </marquee>
+                            </strong>
+                        </h6>
+                    </td>
+                </tr>
         </table>
     </form>
 </body>

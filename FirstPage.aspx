@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true"
-    CodeFile="FirstPage.aspx.cs" Inherits="FirsrPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="FirstPage.aspx.cs" Inherits="FirsrPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
-        .style14
-        {
+        .style14 {
             width: 271px;
         }
     </style>
+    <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table width="65%" border="1" align="center">
         <tr>
@@ -16,8 +16,7 @@
                 <asp:Image Width="100%" ID="Image1" runat="server" ImageUrl="~/image/環太平洋gif.gif" />
             </td>
             <td align="center" width="50%">
-                <iframe runat="server" id="MoviePlay" width="560" height="315" src="https://www.youtube.com/embed/cRtY5PdyrTM"
-                    frameborder="0" allowfullscreen></iframe>
+                <iframe runat="server" id="MoviePlay" width="560" height="315" src="https://www.youtube.com/embed/fAuV_X7CmFM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 <br />
                 <asp:Button ID="btn_pagemov_update" runat="server" Text="更改影片連結" OnClick="btn_pagemov_update_Click" />
                 <a id="pagemov" runat="server" visible="false">
@@ -44,7 +43,7 @@
                 <table>
                     <tr align="center">
                         <td>
-                            <asp:Image ID="Image3" runat="server" ImageUrl="~/image/圖示/熱門影片預告.jpg" /><%--<asp:Label ID="lbl2" runat="server" Text="熱門影片預告" Font-Size="18"></asp:Label>--%>
+                            <asp:Image ID="Image3" runat="server" ImageUrl="~/image/圖示/熱門影片預告.jpg" />
                             <br />
                             <asp:Panel ID="Panel_link" runat="server">
                                 <table border="1" width="80%" align="center">
@@ -110,7 +109,7 @@
                                     <tr>
                                         <td>
                                             <asp:Image ID="Image4" runat="server" ImageUrl="~/image/圖示/連結編號.jpg" />
-                                            <%--<asp:Label ID="連結編號" runat="server" Text="連結編號:" Font-Size="18"></asp:Label>--%>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -121,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:Image ID="Image5" runat="server" ImageUrl="~/image/圖示/標題.jpg" /><%--<asp:Label ID="標題" runat="server" Text="標題:"></asp:Label>--%>
+                                            <asp:Image ID="Image5" runat="server" ImageUrl="~/image/圖示/標題.jpg" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -131,7 +130,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:Image ID="Image6" runat="server" ImageUrl="~/image/圖示/網址.jpg" /><%--<asp:Label ID="網址" runat="server" Text="網址:"></asp:Label>--%>
+                                            <asp:Image ID="Image6" runat="server" ImageUrl="~/image/圖示/網址.jpg" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -195,15 +194,13 @@
                 <table width="100%">
 
                     <tr style="width: 100%">
-                                <td align="center">
-                <br />
-                <asp:Label ID="lbl_mov_top10" runat="server" Text="最新發表" Font-Size="18"></asp:Label><br />
-                <br />
-                <asp:Table ID="TB_mov_top10" runat="server">
-                
-
-                </asp:Table>
-            </td>
+                        <td align="center">
+                            <br />
+                            <asp:Label ID="lbl_mov_top10" runat="server" Text="最新發表" Font-Size="18"></asp:Label><br />
+                            <br />
+                            <asp:Table ID="TB_mov_top10" runat="server">
+                            </asp:Table>
+                        </td>
 
                     </tr>
                 </table>
@@ -212,66 +209,65 @@
     </table>
     <hr />
     <table width="65%" border="1" align="center" style="background-image: url(image/環太平洋table1.jpg)">
-                        <tr align="center" style="width: 100%">
-                        <td id="mastersuggest" runat="server">
-                            <asp:Image ID="Image10" runat="server" ImageUrl="~/image/圖示/站長推薦.jpg" /><%--<asp:Label ID="lol_mastersug" runat="server" Text="站長推薦" Font-Size="18"></asp:Label>--%>
-                            <asp:Table ID="tbl_mastersug" runat="server">
-                            </asp:Table>
-                            <br />
-                            <asp:Button ID="btn_mastersug" runat="server" Text="更改連結" OnClick="btn_mastersug_Click" />
+        <tr align="center" style="width: 100%">
+            <td id="mastersuggest" runat="server">
+                <asp:Image ID="Image10" runat="server" ImageUrl="~/image/圖示/站長推薦.jpg" /><%--<asp:Label ID="lol_mastersug" runat="server" Text="站長推薦" Font-Size="18"></asp:Label>--%>
+                <asp:Table ID="tbl_mastersug" runat="server">
+                </asp:Table>
+                <br />
+                <asp:Button ID="btn_mastersug" runat="server" Text="更改連結" OnClick="btn_mastersug_Click" />
+            </td>
+        </tr>
+        <tr align="center">
+            <td id="Change_mastersug" runat="server" visible="false" align="center" style="width: 100%">
+                <table width="50%" style="border-style: groove">
+                    <tr style="width: 100%">
+                        <td colspan="2">
+                            <asp:Label ID="lbl_mastersug_teach" runat="server" Text="請貼上Youtube鑲入式影片連結中Src中的連結網址"></asp:Label><br />
+                            <a id="lk_btn_mastersug" runat="server" onclick="window.open ('https://support.google.com/youtube/answer/171780?hl=zh-Hant','設定教學',config='height=500,width=500');"
+                                style="color: #FF0000">連結參數設定請參照官網(點我)</a>
                         </td>
                     </tr>
-        <tr align="center">
-                                <td id="Change_mastersug" runat="server" visible="false" align="center" style="width: 100%">
-                            <table width="50%" style="border-style: groove">
-                                <tr style="width: 100%">
-                                    <td colspan="2">
-                                        <asp:Label ID="lbl_mastersug_teach" runat="server" Text="請貼上Youtube鑲入式影片連結中Src中的連結網址"></asp:Label><br />
-                                        <a id="lk_btn_mastersug" runat="server" onclick="window.open ('https://support.google.com/youtube/answer/171780?hl=zh-Hant','設定教學',config='height=500,width=500');"
-                                            style="color: #FF0000">連結參數設定請參照官網(點我)</a>
-                                    </td>
-                                </tr>
-                                <tr style="width: 100%">
-                                    <td class="style14">
-                                        <asp:Label ID="lbl_mastersug_check_delete" runat="server" Text="選擇剔除連結:">
-                                        </asp:Label><asp:DropDownList ID="ddl_mastersug" runat="server">
-                                        </asp:DropDownList>
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_mastersug_Add_title" runat="server" Text="標題名稱:"></asp:Label>
-                                        <asp:Label ID="lbl_mastersug_Add_title2" runat="server" Text="尚未選取內容"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr style="width: 100%">
-                                    <td class="style14">
-                                        <asp:FileUpload ID="FileUpload_img" runat="server" /><br />
-                                        <asp:Button ID="btn_ReFileUpload_img" runat="server" Text="重新選擇圖片" Visible="false"
-                                            OnClick="btn_ReFileUpload_img_Click" />
-                                        <asp:Button ID="btn_check_image" runat="server" OnClick="btn_check_image_Click" Text="預覽" />
-                                    </td>
-                                    <td>
-                                        <asp:Label ID="lbl_mastersug_Add_src" runat="server" Text="連結網址:"></asp:Label><br />
-                                        <asp:TextBox ID="tb_mastersug_Add_src" runat="server" TextMode="MultiLine" Width="210"></asp:TextBox><br />
-                                    </td>
-                                </tr>
-                                <tr style="width: 100%">
-                                    <td colspan="2">
-                                        <asp:Image ID="Image_mastersug_Add_image" runat="server" Width="200px" Height="200px" />
-                                    </td>
-                                </tr>
-                                <tr style="width: 100%">
-                                    <td class="style14">
-                                        <asp:Button ID="btn_mastersug_Add_ok" runat="server" Text="確定更改" OnClick="btn_mastersug_Add_ok_Click"
-                                            Visible="false" />
-                                        <asp:Label ID="lbl_mastersug_Add_tip" runat="server" Text="請預覽圖片後上傳" Style="color: #FF0000;
-                                            font-size: 20px;"></asp:Label>
-                                    </td>
-                                    <td>
-                                        <asp:Button ID="btn_mastersug_Add_end" runat="server" Text="離開" OnClick="btn_mastersug_Add_end_Click" />
-                                    </td>
-                                </tr>
-                            </table>
+                    <tr style="width: 100%">
+                        <td class="style14">
+                            <asp:Label ID="lbl_mastersug_check_delete" runat="server" Text="選擇剔除連結:">
+                            </asp:Label><asp:DropDownList ID="ddl_mastersug" runat="server">
+                            </asp:DropDownList>
                         </td>
+                        <td>
+                            <asp:Label ID="lbl_mastersug_Add_title" runat="server" Text="標題名稱:"></asp:Label>
+                            <asp:Label ID="lbl_mastersug_Add_title2" runat="server" Text="尚未選取內容"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr style="width: 100%">
+                        <td class="style14">
+                            <asp:FileUpload ID="FileUpload_img" runat="server" /><br />
+                            <asp:Button ID="btn_ReFileUpload_img" runat="server" Text="重新選擇圖片" Visible="false"
+                                OnClick="btn_ReFileUpload_img_Click" />
+                            <asp:Button ID="btn_check_image" runat="server" OnClick="btn_check_image_Click" Text="預覽" />
+                        </td>
+                        <td>
+                            <asp:Label ID="lbl_mastersug_Add_src" runat="server" Text="連結網址:"></asp:Label><br />
+                            <asp:TextBox ID="tb_mastersug_Add_src" runat="server" TextMode="MultiLine" Width="210"></asp:TextBox><br />
+                        </td>
+                    </tr>
+                    <tr style="width: 100%">
+                        <td colspan="2">
+                            <asp:Image ID="Image_mastersug_Add_image" runat="server" Width="200px" Height="200px" />
+                        </td>
+                    </tr>
+                    <tr style="width: 100%">
+                        <td class="style14">
+                            <asp:Button ID="btn_mastersug_Add_ok" runat="server" Text="確定更改" OnClick="btn_mastersug_Add_ok_Click"
+                                Visible="false" />
+                            <asp:Label ID="lbl_mastersug_Add_tip" runat="server" Text="請預覽圖片後上傳" Style="color: #FF0000; font-size: 20px;"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:Button ID="btn_mastersug_Add_end" runat="server" Text="離開" OnClick="btn_mastersug_Add_end_Click" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
         </tr>
     </table>
 </asp:Content>

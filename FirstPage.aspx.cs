@@ -39,33 +39,22 @@ public partial class FirsrPage : System.Web.UI.Page
             }
         }
         DataTable dt = new DataTable();
-        string page_src = "select src from HotLink where type='pagemov'";
-        dt = conns.LoadTable_SQL(page_src, "");
-        string page_youtube = dt.Rows[0]["src"].ToString();
-        MoviePlay.Attributes.Add("src", page_youtube);
+        //string page_src = "select src from HotLink where type='pagemov'";
+        //dt = conns.LoadTable_SQL(page_src, "");
+        //string page_youtube = dt.Rows[0]["src"].ToString();
+        //MoviePlay.Attributes.Add("src", page_youtube);
 
-        //Image1.ImageUrl = arry[ m_nCurID ];
-        //++m_nCurID;
-        //int z = 0;
-        //string 大尾鱸鰻片段 = "~/image/大尾鱸鰻片段.jpg";
-        //Image1.ImageUrl = 大尾鱸鰻片段;
-        //string[] arry = new string[] { "~/image/仙履奇緣.jpg", "~/image/五月天傷心的人別聽慢歌.jpg", 大尾鱸鰻片段 };
+     
 
         
 
-        WebLinkbtn();
-        Top10();
-        mastersug();
+        //WebLinkbtn();
+        //Top10();
+        //mastersug();
 
         if (IsPostBack)
         {
 
-            //z = int.Parse(ViewState["z"].ToString());
-            //z = z % arry.Length;
-            //{
-            //    Image1.ImageUrl = arry[z];
-            //    ViewState["z"] = z + 1;
-            //}
 
         }
         else
@@ -73,24 +62,7 @@ public partial class FirsrPage : System.Web.UI.Page
 
             ViewState["z"] = 0;
 
-            //int  nRow = 10;
-            //  LinkButton linkbtn;
-            //  for (int i = 0; i < nRow; ++i)
-            //  {
-            //      TableRow kRow = new TableRow();
-            //      for (int j = 0; j < 2; ++j)
-            //      {
-            //          TableCell kCell = new TableCell();
-
-            //          linkbtn = new LinkButton();
-            //          linkbtn.ID = "llkbtn" + (j + 1);
-            //          //linkbtn.Click += new EventHandler();
-            //          //kRow.Controls.Add(linkbtn);
-            //          kCell.Style[HtmlTextWriterStyle.TextAlign] = "center";
-            //          kRow.Cells.Add(kCell);
-
-            //      }
-            //  }
+         
             Panel_Update.Visible = false;
             for (int i = 1; i < 11; i++)
                 this.ddlnumber.Items.Add(i.ToString());
@@ -107,7 +79,7 @@ public partial class FirsrPage : System.Web.UI.Page
                     {
                         ((LinkButton)(c)).Text = dt.Rows[0]["title"].ToString();
                         ((LinkButton)(c)).ToolTip = dt.Rows[0]["src"].ToString();
-                        //MoviePlay.Attributes.Add("src", dt.Rows[0]["src"].ToString());
+                    
                     }
                 }
             }
@@ -346,20 +318,7 @@ public partial class FirsrPage : System.Web.UI.Page
             }
         }
     }
-    //protected void AddTitle(string str)
-    //{
-    //    Label lb;
-    //    TableRow aRow = new TableRow();
-    //    TableCell Ti0 = new TableCell();
-    //    lb = new Label();
-    //    lb.Text = str;
-    //    Ti0.Controls.Add(lb);
-    //    Ti0.Style[HtmlTextWriterStyle.TextAlign] = "center";
-        
-    //    Ti0.BorderWidth = 1;
-    //    aRow.Cells.Add(Ti0);
-    //    TB_mov_top10.Rows.Add(aRow);
-    //}
+  
     protected void mastersug()
     {
         string str111 = "select * from HotLink where type='mastersug'";

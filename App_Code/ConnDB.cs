@@ -8,7 +8,7 @@ using System.Data;
 public class ConnDB
 {
     SqlConnection SqlConn = new SqlConnection();
-    string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["G10ConnectionString2"].ConnectionString;
+    string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["JustConnectionString"].ConnectionString;
 
     public string OpenSQL()
     {
