@@ -1,0 +1,83 @@
+﻿body{
+    margin-Top:5px;
+    margin-left:5px;
+    margin-right:5px;
+    margin-bottom:0;
+ }
+div.dvRptMain{
+    vertical-align:top;
+    min-height:100%;
+    padding-bottom: 40px
+    }
+
+div.dvRptMain{
+    min-height:35px;
+    }
+div.dvRptMain td.Caption1{
+    text-align :left;
+    font-family: "標楷體";
+    font-weight:bold;
+    font-size:20px;
+    padding:5px
+    }
+div.dvRptMain td.Caption2{
+    text-align :left;
+     font-weight:bold;
+    font-size:20px;
+    padding: 5px 20px;
+    }
+div.dvRptMain td.Caption1{
+    font-size: 14px;
+    line-height: 24px;
+    padding: 1px 20px;
+    }
+div.dvRptMain td.Caption1 > table{
+    border-spacing:0;
+    border-collapse: collapse;
+    border-width: 2xp;
+    }
+div.dvRptMain td.Caption1 > table > tbody > tr > th {
+    font-size: 14px
+    }
+div.dvRptMain td.Caption1 > table > tbody > tr > th[colspan]{
+    background-color : #EEEEEE;
+    text-align: left;
+    }
+div.dvRptMain td.Caption1 > table > tbody > tr > td {
+    font-size: 14px;
+    padding: 3px;
+    }
+/** Sepeartots **/
+
+div.dvRptMain tr.seperator1 > td, div.dvRptMain td.seperatorl{
+    border-top: 1px dashed #000 ! important;
+    }
+div.dvRptMain table.CascadeTablel{
+    text-align: left;
+    line-height: normal;
+    }
+TextboxFil1{
+    overflow:hidden;
+    display: inline;
+    min-width: 300px;
+    min-height: 30px;
+    width:85%;
+    margin:0px 5px 5px 5px;
+    }
+.right{
+    text-align: right !important;
+}
+.left{
+    text-align: left !important;
+}
+.center{
+    text-align: center !important;
+}
+NonDisplay{
+    display: none;
+}
+LinkBtnColor {
+    color: #000;
+    text-decoration: none;
+    cursor: default;
+}
