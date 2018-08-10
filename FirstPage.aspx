@@ -4,77 +4,15 @@
     <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
     <script type="text/javascript">      
         window.onload = function () {
-
-            document.getElementById('ContentPlaceHolder1_linkbtn1').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn1').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-            document.getElementById('ContentPlaceHolder1_linkbtn2').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn2').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-
-            document.getElementById('ContentPlaceHolder1_linkbtn3').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn3').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-            document.getElementById('ContentPlaceHolder1_linkbtn4').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn4').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-            document.getElementById('ContentPlaceHolder1_linkbtn5').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn5').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-            document.getElementById('ContentPlaceHolder1_linkbtn6').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn6').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-            document.getElementById('ContentPlaceHolder1_linkbtn7').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn7').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-            document.getElementById('ContentPlaceHolder1_linkbtn8').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn8').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-            document.getElementById('ContentPlaceHolder1_linkbtn9').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn9').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
-
-            document.getElementById('ContentPlaceHolder1_linkbtn10').onclick = function (e) {
-                e.preventDefault();
-                let src = document.getElementById('ContentPlaceHolder1_linkbtn10').title;
-                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
-                elmv.setAttribute('src', src);
-            };
+            var linkbtnArray = document.querySelectorAll('.a-hot');
+            for (let i = 0; i < linkbtnArray.length; i++) {
+                document.getElementById(`ContentPlaceHolder1_linkbtn${i + 1}`).onclick = function (e) {
+                    e.preventDefault();
+                    let src = document.getElementById(`ContentPlaceHolder1_linkbtn${i + 1}`).title;
+                    let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                    elmv.setAttribute('src', src);
+                };
+            }
         }
     </script>
 </asp:Content>
@@ -105,52 +43,52 @@
                                 <table border="1" width="80%" align="center">
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn1" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn1" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn2" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn2" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn3" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn3" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn4" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn4" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn5" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn5" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn6" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn6" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn7" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn7" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn8" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn8" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn9" runat="server" ></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn9" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn10" runat="server"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn10" runat="server" class="a-hot"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
