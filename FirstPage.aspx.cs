@@ -9,89 +9,68 @@ using System.Data.SqlClient;
 using System.Web.SessionState;
 using System.IO;
 
-
-
-
 public partial class FirsrPage : System.Web.UI.Page
 {
-    ConnDB conns = new ConnDB();
+
+    private ConnDB conns;
+    private DataTable dt;
+
+    private string SessionAccount
+    {
+        get
+        {
+            return Session["帳號"] != null ? Session["帳號"].ToString() : "";
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        btn_pagemov_update.Visible = false;
-        td_btnUpData.Visible = false;
-        Delete_SuggestWeb.Visible = false;
-        Add_SuggestWeb.Visible = false;
-        btn_pagemov_update.Visible = false;
-        btn_mastersug.Visible = false;
+        conns = new ConnDB();
+        string listHotID = string.Empty;
 
-        if (Session["帳號"] != null)
+        if (!IsPostBack)
         {
-            string Name = Session["帳號"].ToString();
-            //string Nike = conns.getNikebyName(Name);
-            if (Name == "G10")
-            {
-                btn_pagemov_update.Visible = true;
-                td_btnUpData.Visible = true;
-                Delete_SuggestWeb.Visible = true;
-                Add_SuggestWeb.Visible = true;
-                btn_pagemov_update.Visible = true;
-                btn_mastersug.Visible = true;
-            }
-        }
-        DataTable dt = new DataTable();
-        //string page_src = "select src from HotLink where type='pagemov'";
-        //dt = conns.LoadTable_SQL(page_src, "");
-        //string page_youtube = dt.Rows[0]["src"].ToString();
-        //MoviePlay.Attributes.Add("src", page_youtube);
-
-     
-
-        
-
-        //WebLinkbtn();
-        //Top10();
-        //mastersug();
-
-        if (IsPostBack)
-        {
-
-
-        }
-        else
-        {
-
-            ViewState["z"] = 0;
-
-         
             Panel_Update.Visible = false;
+
             for (int i = 1; i < 11; i++)
                 this.ddlnumber.Items.Add(i.ToString());
 
             foreach (Control c in Panel_link.Controls)
-            //foreach (Control c in Panel_link.Controls)
             {
                 if (c.GetType() == typeof(LinkButton))
                 {
-                    string j = ((LinkButton)(c)).ID.Replace("linkbtn", "");
+                    listHotID += "'" + (((LinkButton)(c)).ID.Replace("linkbtn", "")) + "'" + ",";
+                }
+            }
 
-                    dt = conns.HotSrc(j);
-                    if (dt.Rows.Count > 0)
+            var hotLinkDTOs = conns.HotSrc(listHotID.Trim(','));
+            if (hotLinkDTOs.Any())
+            {
+                foreach (Control c in Panel_link.Controls)
+                {
+                    if (c.GetType() == typeof(LinkButton))
                     {
-                        ((LinkButton)(c)).Text = dt.Rows[0]["title"].ToString();
-                        ((LinkButton)(c)).ToolTip = dt.Rows[0]["src"].ToString();
-                    
+                        ((LinkButton)(c)).Text = hotLinkDTOs.Where(x => x.Idnumber == c.ID.ToString()).Select(x => x.title).SingleOrDefault();
+                        ((LinkButton)(c)).ToolTip = hotLinkDTOs.Where(x => x.Idnumber == c.ID.ToString()).Select(x => x.src).SingleOrDefault();
                     }
                 }
             }
         }
-    }
-    protected void linkbtn_熱門_Click(object sender, EventArgs e)
-    {
-        LinkButton linkbtn = (LinkButton)sender;
-        string page_youtube = linkbtn.ToolTip;
-        MoviePlay.Attributes.Add("src", page_youtube);
+
+        PageLoadVisible(false);
+        if (SessionAccount == "G10") { PageLoadVisible(true); }
     }
 
+    private void PageLoadVisible(bool value)
+    {
+        
+        td_btnUpData.Visible = value;
+        Delete_SuggestWeb.Visible = value;
+        Add_SuggestWeb.Visible = value;
+    
+        btn_mastersug.Visible = value;
+    }
+  
     protected void btninto_Click(object sender, EventArgs e)
     {
 
@@ -118,19 +97,19 @@ public partial class FirsrPage : System.Web.UI.Page
                     {
                         string j = ((LinkButton)(c)).ID.Replace("linkbtn", "");
 
-                        dt = conns.HotSrc(j);
-                        if (dt.Rows.Count > 0)
-                        {
-                            ((LinkButton)(c)).Text = dt.Rows[0]["title"].ToString();
-                            ((LinkButton)(c)).ToolTip = dt.Rows[0]["src"].ToString();
-                        }
+                        //dt = conns.HotSrc(j);
+                        //if (dt.Rows.Count > 0)
+                        //{
+                        //    ((LinkButton)(c)).Text = dt.Rows[0]["title"].ToString();
+                        //    ((LinkButton)(c)).ToolTip = dt.Rows[0]["src"].ToString();
+                        //}
                     }
                 }
             }
             else
             {
 
-                
+
             }
 
         }
@@ -236,7 +215,7 @@ public partial class FirsrPage : System.Web.UI.Page
                 //cell標題
                 TableCell imgCell = new TableCell();
                 imge = new Image();
-                imge.Width =45;
+                imge.Width = 45;
                 imge.Height = 70;
                 imge.ImageUrl = dt.Rows[i]["ImageUrl"].ToString();
                 imgCell.Controls.Add(imge);
@@ -318,7 +297,7 @@ public partial class FirsrPage : System.Web.UI.Page
             }
         }
     }
-  
+
     protected void mastersug()
     {
         string str111 = "select * from HotLink where type='mastersug'";
@@ -367,31 +346,31 @@ public partial class FirsrPage : System.Web.UI.Page
     protected void WebLinkbtn()
     {
 
-        string str = "select COUNT(*) 總數 from HotLink where type='SuggestWeb'";
-        DataTable dt = new DataTable();
-        dt = conns.LoadTable_SQL(str, "");
-        int nRow = int.Parse(dt.Rows[0]["總數"].ToString());
-        LinkButton linkbtn;
-        for (int i = 11; i <= nRow + 10; ++i)
-        {
-            TableRow kRow = new TableRow();
-            for (int j = 0; j < 1; ++j)
-            {
-                TableCell kCell = new TableCell();
-                linkbtn = new LinkButton();
-                dt = new DataTable();
-                dt = conns.HotSrc(i.ToString());
-                //linkbtn.ID = "linkbtn" + i;
-                linkbtn.Text = dt.Rows[0]["title"].ToString();
-                linkbtn.PostBackUrl = dt.Rows[0]["src"].ToString();
-                //linkbtn.Click += new EventHandler(Click);
-                kCell.Controls.Add(linkbtn);
-                kCell.Style[HtmlTextWriterStyle.TextAlign] = "center";
-                kCell.BorderWidth = 2;
-                kRow.Cells.Add(kCell);
-                SuggestWeb.Rows.Add(kRow);
-            }
-        }
+        //string str = "select COUNT(*) 總數 from HotLink where type='SuggestWeb'";
+        //DataTable dt = new DataTable();
+        //dt = conns.LoadTable_SQL(str, "");
+        //int nRow = int.Parse(dt.Rows[0]["總數"].ToString());
+        //LinkButton linkbtn;
+        //for (int i = 11; i <= nRow + 10; ++i)
+        //{
+        //    TableRow kRow = new TableRow();
+        //    for (int j = 0; j < 1; ++j)
+        //    {
+        //        TableCell kCell = new TableCell();
+        //        linkbtn = new LinkButton();
+        //        dt = new DataTable();
+        //        dt = conns.HotSrc(i.ToString());
+        //        //linkbtn.ID = "linkbtn" + i;
+        //        linkbtn.Text = dt.Rows[0]["title"].ToString();
+        //        linkbtn.PostBackUrl = dt.Rows[0]["src"].ToString();
+        //        //linkbtn.Click += new EventHandler(Click);
+        //        kCell.Controls.Add(linkbtn);
+        //        kCell.Style[HtmlTextWriterStyle.TextAlign] = "center";
+        //        kCell.BorderWidth = 2;
+        //        kRow.Cells.Add(kCell);
+        //        SuggestWeb.Rows.Add(kRow);
+        //    }
+        //}
     }
     protected void Delete_SuggestWeb_Click(object sender, EventArgs e)
     {
@@ -505,40 +484,16 @@ public partial class FirsrPage : System.Web.UI.Page
     protected void btn_pagemov_update_Click(object sender, EventArgs e)
     {
         MoviePlay.Visible = false;
-        pagemov.Visible = true;
-        btn_pagemov_update.Visible = false;
+     
     }
     protected void btn_pagemov_update_ok_Click(object sender, EventArgs e)
     {
-        if (tb_pagemov_src.Text == "")
-        {
-            Response.Write("<script language=javascript>alert('請輸入正確網址且不可空白')</script>");
-            Response.Write("<script language=javascript>javascript:window.history.back(-1)</script>");
-        }
-        else
-        {
-            string pagemovsrc = tb_pagemov_src.Text;
-            string sqlStr;
-            sqlStr = "Update HotLink Set Src='" + pagemovsrc + "' Where type='pagemov'";
-            string rtnMsg;
-            rtnMsg = conns.RunSqlStr(sqlStr, "");
-            if (rtnMsg == "Success")
-            {
-                Response.Write("<script language=javascript>alert('更新完成')</script>");
-                Response.Write("<script language=javascript>javascript:window.history.back(-1)</script>");
-            }
-            else
-            {
-                Response.Write("<script language=javascript>alert('內容更新失敗')</script>");
-                Response.Write("<script language=javascript>javascript:window.history.back(-1)</script>");
-            }
-        }
+      
     }
     protected void btn_pagemov_update_end_Click(object sender, EventArgs e)
     {
         MoviePlay.Visible = true;
-        pagemov.Visible = false;
-        btn_pagemov_update.Visible = true;
+    
         Response.Write("<script language=javascript>if(confirm('確定離開修改介面?')==true)window.location.href='FirstPage.aspx' ;else javascript:window.history.back(-1) </script>");
 
 
@@ -590,7 +545,7 @@ public partial class FirsrPage : System.Web.UI.Page
 
         {
 
-            
+
             lbl_mastersug_Add_title2.Text = "尚未選取內容";
             Response.Write("<script language=javascript>alert('請選擇上傳圖片')</script>");
             Response.Write("<script language=javascript>javascript:window.history.back(-1)</script>");
@@ -606,13 +561,13 @@ public partial class FirsrPage : System.Web.UI.Page
 
             Response.Write("<script language=javascript>alert('欲更改建議連結,請填寫連結網址及選擇上傳圖片')</script>");
             Response.Write("<script language=javascript>javascript:window.history.back(-1)</script>");
-          
+
         }
         else
         {
-            try 
+            try
             {
-  
+
                 string title = ViewState["FileName"].ToString();
                 string src = tb_mastersug_Add_src.Text;
                 string orignfile, newfile;
@@ -624,12 +579,12 @@ public partial class FirsrPage : System.Web.UI.Page
                 rtnMsg = conns.RunSqlStr(sqlStr, "");
 
             }
-            catch 
-            { 
-            
+            catch
+            {
+
             }
 
-        
+
         }
         //Dim di As New DirectoryInfo("C:\test")
         //di.MoveTo("C:\test2")

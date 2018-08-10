@@ -1,43 +1,99 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="FirstPage.aspx.cs" Inherits="FirsrPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style type="text/css">
-        .style14 {
-            width: 271px;
-        }
-    </style>
     <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+    <script type="text/javascript">      
+        window.onload = function () {
+
+            document.getElementById('ContentPlaceHolder1_linkbtn1').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn1').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+            document.getElementById('ContentPlaceHolder1_linkbtn2').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn2').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+
+            document.getElementById('ContentPlaceHolder1_linkbtn3').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn3').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+            document.getElementById('ContentPlaceHolder1_linkbtn4').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn4').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+            document.getElementById('ContentPlaceHolder1_linkbtn5').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn5').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+            document.getElementById('ContentPlaceHolder1_linkbtn6').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn6').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+            document.getElementById('ContentPlaceHolder1_linkbtn7').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn7').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+            document.getElementById('ContentPlaceHolder1_linkbtn8').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn8').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+            document.getElementById('ContentPlaceHolder1_linkbtn9').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn9').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+
+            document.getElementById('ContentPlaceHolder1_linkbtn10').onclick = function (e) {
+                e.preventDefault();
+                let src = document.getElementById('ContentPlaceHolder1_linkbtn10').title;
+                let elmv = document.getElementById('ContentPlaceHolder1_MoviePlay');
+                elmv.setAttribute('src', src);
+            };
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <table width="65%" border="1" align="center">
+    <table width="80%" border="1" align="center">
         <tr>
             <td width="25%">
                 <asp:Image Width="100%" ID="Image1" runat="server" ImageUrl="~/image/環太平洋gif.gif" />
             </td>
             <td align="center" width="50%">
-                <iframe runat="server" id="MoviePlay" width="560" height="315" src="https://www.youtube.com/embed/fAuV_X7CmFM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                <br />
-                <asp:Button ID="btn_pagemov_update" runat="server" Text="更改影片連結" OnClick="btn_pagemov_update_Click" />
-                <a id="pagemov" runat="server" visible="false">
-                    <asp:Label ID="lbl_pagemov" runat="server" Text="請貼上Youtube鑲入式影片連結中Src中的連結網址"></asp:Label><br />
-                    <p id="lk_btn_pagemov" runat="server" onclick="window.open ('https://support.google.com/youtube/answer/171780?hl=zh-Hant','設定教學',config='height=500,width=500');"
-                        style="color: #FF0000">
-                        連結參數設定請參照官網(點我)
-                    </p>
-                    <br />
-                    <asp:Label ID="lbl_pagemov_src" runat="server" Height="40px" Text="Youtube_Src:"></asp:Label>
-                    <asp:TextBox ID="tb_pagemov_src" runat="server" Height="40px" Width="200" TextMode="MultiLine"></asp:TextBox><br />
-                    <asp:Button ID="btn_pagemov_update_ok" runat="server" Text="確定" OnClick="btn_pagemov_update_ok_Click" />
-                    <asp:Button ID="btn_pagemov_update_end" runat="server" Text="結束" OnClick="btn_pagemov_update_end_Click" />
-                </a>
+                <iframe runat="server" id="MoviePlay" width="660" height="470" src="https://www.youtube.com/embed/0CmsVuvtqSM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </td>
             <td width="25%">
                 <asp:Image Width="100%" ID="Image2" runat="server" ImageUrl="~/image/復仇者聯盟2gif.gif" />
             </td>
         </tr>
     </table>
-    <table width="65%" border="1" align="center" style="background-image: url(image/test.jpg)">
+    <table width="80%" border="1" align="center" style="background-image: url(image/test.jpg)">
         <tr>
             <td style="width: 20%; border: 5;">
                 <table>
@@ -49,52 +105,52 @@
                                 <table border="1" width="80%" align="center">
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn1" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn1" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn2" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn2" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn3" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn3" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn4" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn4" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn5" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn5" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn6" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn6" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn7" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn7" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn8" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn8" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn9" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn9" runat="server" ></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            <asp:LinkButton ID="linkbtn10" runat="server" OnClick="linkbtn_熱門_Click"></asp:LinkButton>
+                                            <asp:LinkButton ID="linkbtn10" runat="server"></asp:LinkButton>
                                         </td>
                                     </tr>
                                     <tr align="center">
