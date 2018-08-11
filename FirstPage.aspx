@@ -24,7 +24,8 @@
                 <asp:Image Width="100%" ID="Image1" runat="server" ImageUrl="~/image/環太平洋gif.gif" />
             </td>
             <td align="center" width="50%">
-                <iframe runat="server" id="MoviePlay" width="834" height="595" src="https://www.youtube.com/embed/0CmsVuvtqSM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+               <%-- <iframe runat="server" id="MoviePlay" width="834" height="595" src="https://www.youtube.com/embed/0CmsVuvtqSM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>--%>
+                 <iframe runat="server" id="MoviePlay" width="834" height="595" src="https://www.youtube.com/embed/0CmsVuvtqSM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </td>
             <td width="25%">
                 <asp:Image Width="100%" ID="Image2" runat="server" ImageUrl="~/image/復仇者聯盟2gif.gif" />

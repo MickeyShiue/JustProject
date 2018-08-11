@@ -67,7 +67,6 @@ public partial class FirsrPage : System.Web.UI.Page
         td_btnUpData.Visible = value;
         Delete_SuggestWeb.Visible = value;
         Add_SuggestWeb.Visible = value;
-    
         btn_mastersug.Visible = value;
     }
   
