@@ -26,7 +26,7 @@ public partial class FirsrPage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         conns = new ConnDB();
-        string listHotID = string.Empty;
+        string listHotSortNum = string.Empty;
 
         if (!IsPostBack)
         {
@@ -39,19 +39,19 @@ public partial class FirsrPage : System.Web.UI.Page
             {
                 if (c.GetType() == typeof(LinkButton))
                 {
-                    listHotID += "'" + (((LinkButton)(c)).ID.Replace("linkbtn", "")) + "'" + ",";
+                    listHotSortNum += "'" + (((LinkButton)(c)).ID.Replace("linkbtn", "")) + "'" + ",";
                 }
             }
 
-            var hotLinkDTOs = conns.HotSrc(listHotID.Trim(','));
+            var hotLinkDTOs = conns.HotSrc(listHotSortNum.Trim(','));
             if (hotLinkDTOs.Any())
             {
                 foreach (Control c in Panel_link.Controls)
                 {
                     if (c.GetType() == typeof(LinkButton))
                     {
-                        ((LinkButton)(c)).Text = hotLinkDTOs.Where(x => x.Idnumber == c.ID.ToString()).Select(x => x.title).SingleOrDefault();
-                        ((LinkButton)(c)).ToolTip = hotLinkDTOs.Where(x => x.Idnumber == c.ID.ToString()).Select(x => x.src).SingleOrDefault();
+                        ((LinkButton)(c)).Text = hotLinkDTOs.Where(x => x.Sort == c.ID.ToString()).Select(x => x.title).SingleOrDefault();
+                        ((LinkButton)(c)).ToolTip = hotLinkDTOs.Where(x => x.Sort == c.ID.ToString()).Select(x => x.src).SingleOrDefault();
                     }
                 }
             }

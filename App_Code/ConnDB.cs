@@ -159,14 +159,14 @@ public class ConnDB
         dt = conns.LoadTable_SQL(str, "");
         return dt;
     }
-    public IEnumerable<HotLinkDTO> HotSrc(string Idnumber)
+    public IEnumerable<HotLinkDTO> HotSrc(string SortNumber)
     {        
-        string str = string.Format("select 'linkbtn'+Idnumber as Idnumber, title , src from HotLink where Idnumber IN({0})", Idnumber);
-        var dt  = LoadTable_SQL(str, Idnumber);
+        string str = string.Format("select 'linkbtn'+Convert(varchar,Sort) as Sort, title , src from HotLink where Sort IN({0})", SortNumber);
+        var dt  = LoadTable_SQL(str, SortNumber);
 
         List<HotLinkDTO> hotLinkDTOs = dt.AsEnumerable().Select(x => new HotLinkDTO()
         {
-            Idnumber = x.Field<string>("Idnumber"),
+            Sort = x.Field<string>("Sort"),
             title = x.Field<string>("title"),
             src = x.Field<string>("src"),
         }).ToList();
