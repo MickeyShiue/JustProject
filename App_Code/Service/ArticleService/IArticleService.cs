@@ -9,5 +9,7 @@ public interface IArticleService
 {
     IEnumerable<ArticleDTO> GetArticleByType(string MovieType);
 
-    string DeleteArticle(int Id);
+    ArticleDTO GetArticleById(string Id);
+
+    string DeleteArticle(string Id);
 }

@@ -11,21 +11,33 @@ using System.Text;
 using System.IO;
 using System.Web.SessionState;
 
-public partial class Look : System.Web.UI.Page
+public partial class MovieDetail : System.Web.UI.Page
 {
     DataTable timeDt = new DataTable();
     ConnDB conns = new ConnDB();
     string dtn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+    public string Querystring
+    {
+        get
+        {
+            return Request["SuppNumb"];
+        }
+    }
+
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (string.IsNullOrEmpty(Querystring))
+            Response.Redirect("MoviePage.aspx");
 
-        string Numbr;
-        Numbr = Request["SuppNumb"];
+
         DataTable dt = new DataTable();
-        string page_src = "select src from 發文資料表 where 發文編號='" + Numbr + "'";
+        string page_src = "select YoutubeUrl from Article where Id='" + Querystring + "'";
         dt = conns.LoadTable_SQL(page_src, "");
-        string page_youtube = dt.Rows[0]["src"].ToString();
-        MoviePlay.Attributes.Add("src", page_youtube);
+        string page_youtube = dt.Rows[0]["YoutubeUrl"].ToString();
+        MoviePlay.Attributes.Add("YoutubeUrl", page_youtube);
 
         if (IsPostBack)//第二次進來
         {
@@ -38,17 +50,18 @@ public partial class Look : System.Web.UI.Page
                 this.TextBox_Contents.Enabled = false;
                 this.Button_into.Enabled = false;
             }
-            Numbr = Request["SuppNumb"];
-            Session["Number"] = Numbr;
-            ViewState["Number"] = Numbr;
-            string sqlStr = "Select * from 發文資料表 where 發文編號 ='" + Numbr + "' ";
+
+       
+            Session["Number"] = Querystring;
+            ViewState["Number"] = Querystring;
+            string sqlStr = "Select * from Article where Id ='" + Querystring + "' ";
             timeDt = conns.LoadTable_SQL(sqlStr, "");
             this.Label_nowtime.Text = DateTime.Now.ToString();
-            this.Label_Nickname.Text = timeDt.Rows[0]["暱稱"].ToString();
-            this.Label_title.Text = timeDt.Rows[0]["標題"].ToString();
-            this.Label_Keynote.Text = timeDt.Rows[0]["主旨"].ToString();
-            this.Label_time.Text = timeDt.Rows[0]["時間"].ToString();
-            this.Label_Contents.Text = timeDt.Rows[0]["內容"].ToString();
+            this.Label_Nickname.Text = timeDt.Rows[0]["Name"].ToString();
+            this.Label_title.Text = timeDt.Rows[0]["MovieType"].ToString();
+            this.Label_Keynote.Text = timeDt.Rows[0]["Title"].ToString();
+            this.Label_time.Text = timeDt.Rows[0]["CreateTime"].ToString();
+            this.Label_Contents.Text = timeDt.Rows[0]["Content"].ToString();
         }
     }
     protected void Button_into_Click1(object sender, EventArgs e)
@@ -78,9 +91,9 @@ public partial class Look : System.Web.UI.Page
         Numbr = Request["SuppNumb"];
         ConnDB conns = new ConnDB();
         DataTable dt = new DataTable();
-        string str = "select * from 發文資料表 Where 發文編號='" + Numbr + "'";
+        string str = "select * from Article Where Id='" + Numbr + "'";
         dt = conns.LoadTable_SQL(str, "");
-        string url = dt.Rows[0]["ImageUrl"].ToString();
+        string url = dt.Rows[0]["ImagePath"].ToString();
         Image2.ImageUrl = url;
     }
 
@@ -113,10 +126,10 @@ public partial class Look : System.Web.UI.Page
             {
                 LB.Visible = true;
             }
-            else 
+            else
             {
                 LB.Visible = false;
             }
-        }    
+        }
     }
 }

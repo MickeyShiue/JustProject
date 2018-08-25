@@ -13,12 +13,8 @@
         .backgroundGreen{
             background-color:forestgreen
         }
-
-
     </style>
     <link rel="stylesheet" type="text/css" href="Styles/Grid.css">
-
-
 </asp:Content>
 
 
@@ -29,24 +25,19 @@
     
                 <span class="badge badge-danger backgroundRed">喜劇片</span>
                 <asp:GridView ID="GridView_喜劇" runat="server" 
-                    CssClass="mGrid"
                     AutoGenerateColumns="False"
+                    CssClass="mGrid"
                     CellPadding="3" 
-                    GridLines="Vertical" 
-                    Width="1100px" 
                     DataKeyNames="Id" 
-                    OnRowDeleting="GridView_喜劇_RowDeleting"
-                    AllowPaging="True" 
-                    OnPageIndexChanging="GridView_喜劇_PageIndexChanging"
-                    OnRowDataBound="GridView_喜劇_RowDataBound">
-             
+                    GridLines="Vertical" 
+                    Width="1100px" >
                     <Columns>
-                        <asp:TemplateField HeaderText="標題">
+                        <asp:TemplateField HeaderText="電影名稱" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "Look.aspx?SuppNumb={0}") %>' Text='<%# Eval("title") %>'></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?SuppNumb={0}") %>' Text='<%# Eval("title") %>'></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
+                        <asp:TemplateField HeaderText="發布者" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center">
                             <EditItemTemplate>
                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
                             </EditItemTemplate>
@@ -54,20 +45,20 @@
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
+                        <asp:TemplateField HeaderText="發文時間" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("StrCreateTime")%>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("StrCreateTime") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
+                        <asp:TemplateField HeaderText="最後回覆" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:TextBox>
+                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("StrLastReplyTime") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:Label>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("StrLastReplyTime") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -78,46 +69,31 @@
             <td align="center" class="style17">
                 <span class="badge badge-success backgroundGreen">動作片</span>
                 <asp:GridView ID="GridView_動作" runat="server" 
-                    CssClass="mGrid"
                     AutoGenerateColumns="False"
+                    CssClass="mGrid"
                     CellPadding="3" 
-                    GridLines="Vertical" 
-                    Width="1100px" 
                     DataKeyNames="Id" 
-                    OnRowDeleting="GridView_動作_RowDeleting" 
-                    AllowPaging="True"
-                    OnPageIndexChanging="GridView_動作_PageIndexChanging"
-                    OnRowDataBound="GridView_動作_RowDataBound">
+                    GridLines="Vertical" 
+                    Width="1100px"> 
                     <Columns>
-                        <asp:TemplateField HeaderText="標題">
+                        <asp:TemplateField HeaderText="電影名稱" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:HyperLink ID="HyperLink1" runat="server"
-                                    NavigateUrl='<%# Eval("Id", "Look.aspx?SuppNumb={0}") %>'
-                                    Text='<%# Eval("title") %>'></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?SuppNumb={0}")%>' Text='<%# Eval("title") %>'></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                        <asp:TemplateField HeaderText="發布者" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                        <asp:TemplateField HeaderText="發文時間" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("StrCreateTime") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                        <asp:TemplateField HeaderText="最後回覆" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:Label>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("StrLastReplyTime") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -127,47 +103,32 @@
         <tr>
             <td align="center" class="style17">
                 <span class="badge badge-primary backgrounddeepskyblue">愛情片</span>
-                <asp:GridView ID="GridView_愛情" runat="server" 
-                    CssClass="mGrid"
+                <asp:GridView ID="GridView_愛情" runat="server"
                     AutoGenerateColumns="False"
+                    CssClass="mGrid"
                     CellPadding="3"
-                    GridLines="Vertical"
-                    Width="1100px" 
-                 
                     DataKeyNames="Id" 
-                    OnRowDeleting="GridView_愛情_RowDeleting" AllowPaging="True"
-                    OnPageIndexChanging="GridView_愛情_PageIndexChanging"
-                    OnRowDataBound="GridView_愛情_RowDataBound">
+                    GridLines="Vertical"
+                    Width="1100px"> 
                     <Columns>
-                        <asp:TemplateField HeaderText="標題">
+                        <asp:TemplateField HeaderText="電影名稱" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:HyperLink ID="HyperLink1" runat="server"
-                                    NavigateUrl='<%# Eval("Id", "Look.aspx?SuppNumb={0}") %>'
-                                    Text='<%# Eval("title") %>'></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?SuppNumb={0}")%>' Text='<%# Eval("title") %>'></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                        <asp:TemplateField HeaderText="發布者" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                        <asp:TemplateField HeaderText="發文時間" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("StrCreateTime") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                        <asp:TemplateField HeaderText="最後回覆" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:Label>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("StrLastReplyTime") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

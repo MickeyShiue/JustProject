@@ -30,14 +30,42 @@ public class ArticleService : IArticleService
                 Title = x.Field<string>("Title"),
                 LastReplyTime = x.Field<DateTime>("LastReplyTime"),
                 YoutubeUrl = x.Field<string>("YoutubeUrl"),
-                ImagePath = x.Field<string>("ImagePath")
-              }).ToList();
+                ImagePath = x.Field<string>("ImagePath"),
+                StrCreateTime = x.Field<DateTime>("CreateTime").ToString("yyyy-MM-dd hh:mm:ss"),
+                StrLastReplyTime = x.Field<DateTime>("LastReplyTime").ToString("yyyy-MM-dd hh:mm:ss"),
+            }).ToList();
 
         return _ArticleDTO;
     }
 
-    public string DeleteArticle(int Id)
+    public ArticleDTO GetArticleById(string Id)
+    {
+        string str = string.Format("SELECT * FROM Article WHERE Id='{0}'", Id);
+        DataTable dt = _coonDB.LoadTable_SQL(str);
+
+        ArticleDTO _ArticleDTO = dt.AsEnumerable()
+                   .Select(x => new ArticleDTO()
+                   {
+                       id = x.Field<int>("id"),
+                       MovieType = x.Field<string>("MovieType"),
+                       Name = x.Field<string>("Name"),
+                       Content = x.Field<string>("Content"),
+                       CreateTime = x.Field<DateTime>("CreateTime"),
+                       Title = x.Field<string>("Title"),
+                       LastReplyTime = x.Field<DateTime>("LastReplyTime"),
+                       YoutubeUrl = x.Field<string>("YoutubeUrl"),
+                       ImagePath = x.Field<string>("ImagePath"),
+                       StrCreateTime = x.Field<DateTime>("CreateTime").ToString("yyyy-MM-dd hh:mm:ss"),
+                       StrLastReplyTime = x.Field<DateTime>("LastReplyTime").ToString("yyyy-MM-dd hh:mm:ss")
+                   }).FirstOrDefault();
+
+        return _ArticleDTO;
+    }
+
+    public string DeleteArticle(string Id)
     {
         throw new NotImplementedException();
     }
+
+
 }

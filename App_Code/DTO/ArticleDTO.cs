@@ -16,5 +16,7 @@ namespace DTO
         public string ImagePath { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime LastReplyTime { get; set; }
+        public string StrCreateTime { get; set; } //for顯示用
+        public string StrLastReplyTime { get; set; }//for顯示用
     }
 }
