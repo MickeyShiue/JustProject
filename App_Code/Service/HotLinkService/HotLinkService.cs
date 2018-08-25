@@ -14,7 +14,7 @@ public class HotLinkService :IHotLinkService
 
     public HotLinkService(IConnDB connDB)
     {
-        _coonDB = connDB;
+        this._coonDB = connDB;
     }
 
     public IEnumerable<HotLinkDTO> GetHotSrc(string SortNumber)

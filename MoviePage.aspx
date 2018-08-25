@@ -1,192 +1,179 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MoviePage.aspx.cs" Inherits="MoviePage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <style type="text/css">
-        .style15
-        {
-            font-family: 標楷體;
-            color: #3366FF;
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style>
+        .backgroundRed{
+            background-color:red
         }
-        .style17
-        {
-            height: 198px;
+
+         .backgrounddeepskyblue{
+            background-color:darkblue
         }
+
+        .backgroundGreen{
+            background-color:forestgreen
+        }
+
+
     </style>
+    <link rel="stylesheet" type="text/css" href="Styles/Grid.css">
+
+
 </asp:Content>
 
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-  
-  
-  <table align="center" style="width: 1200px" >
-  <tr>
-  <td  align="center">
-     <!-- <span class="style15"><strong>喜劇片</strong></span>--> 
-        <asp:Button ID="btnMax" runat="server" PostBackUrl="~/發文.aspx" Text="管理者發文" 
-          Visible="False" Width="95px" onclick="btnMax_Click" />
-      <br />
-      <span class="style15"><strong>喜劇片</strong></span><asp:GridView ID="GridView_喜劇" runat="server" AutoGenerateColumns="False" 
-            CellPadding="3" GridLines="Vertical" Width="620px" BackColor="White" 
-            BorderColor="#999999" BorderStyle="None" BorderWidth="1px" 
-            DataKeyNames="發文編號" onrowdeleting="GridView_喜劇_RowDeleting" 
-          AllowPaging="True" onpageindexchanging="GridView_喜劇_PageIndexChanging" 
-          onrowdatabound="GridView_喜劇_RowDataBound">
-               <Columns>
-                   <asp:TemplateField HeaderText="標題">
-                       <ItemTemplate>
-                           <asp:HyperLink ID="HyperLink1" runat="server" 
-                               NavigateUrl='<%# Eval("發文編號", "Look.aspx?SuppNumb={0}") %>' 
-                               Text='<%# Eval("主旨") %>'></asp:HyperLink>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("暱稱") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label1" runat="server" Text='<%# Bind("暱稱") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("時間") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label2" runat="server" Text='<%# Bind("時間") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("最後回覆") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label3" runat="server" Text='<%# Bind("最後回覆") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-            </Columns>
-            <AlternatingRowStyle BackColor="#DCDCDC" />
-            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-            <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
-            <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="#0000A9" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#000065" />             
-        </asp:GridView>
-      </td>
-     </tr>
-     <tr>
-       <td align="center" class="style17">
-           <span class="style15"><strong>動作片</strong></span>
-        <asp:GridView ID="GridView_動作" runat="server" AutoGenerateColumns="False" 
-            CellPadding="3" GridLines="Vertical" Width="620px" BackColor="White" 
-            BorderColor="#999999" BorderStyle="None" BorderWidth="1px" 
-            DataKeyNames="發文編號" onrowdeleting="GridView_動作_RowDeleting" AllowPaging="True" 
-               onpageindexchanging="GridView_動作_PageIndexChanging" 
-               onrowdatabound="GridView_動作_RowDataBound">
-               <Columns>
-                   <asp:TemplateField HeaderText="標題">
-                       <ItemTemplate>
-                           <asp:HyperLink ID="HyperLink1" runat="server" 
-                               NavigateUrl='<%# Eval("發文編號", "Look.aspx?SuppNumb={0}") %>' 
-                               Text='<%# Eval("主旨") %>'></asp:HyperLink>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("暱稱") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label1" runat="server" Text='<%# Bind("暱稱") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("時間") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label2" runat="server" Text='<%# Bind("時間") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("最後回覆") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label3" runat="server" Text='<%# Bind("最後回覆") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-            </Columns>
-           <AlternatingRowStyle BackColor="#DCDCDC" />
-            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-            <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
-            <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="#0000A9" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#000065" />               
-        </asp:GridView>
-      </td>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+     <table align="center" style="width: 1200px">
+        <tr>
+            <td align="center">
+    
+                <span class="badge badge-danger backgroundRed">喜劇片</span>
+                <asp:GridView ID="GridView_喜劇" runat="server" 
+                    CssClass="mGrid"
+                    AutoGenerateColumns="False"
+                    CellPadding="3" 
+                    GridLines="Vertical" 
+                    Width="1100px" 
+                    DataKeyNames="Id" 
+                    OnRowDeleting="GridView_喜劇_RowDeleting"
+                    AllowPaging="True" 
+                    OnPageIndexChanging="GridView_喜劇_PageIndexChanging"
+                    OnRowDataBound="GridView_喜劇_RowDataBound">
+             
+                    <Columns>
+                        <asp:TemplateField HeaderText="標題">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "Look.aspx?SuppNumb={0}") %>' Text='<%# Eval("title") %>'></asp:HyperLink>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </td>
         </tr>
         <tr>
-         <td align="center" class="style17">
-             <span class="style15"><strong>愛情片</strong></span>
-        <asp:GridView ID="GridView_愛情" runat="server" AutoGenerateColumns="False" 
-            CellPadding="3" GridLines="Vertical" Width="620px" BackColor="White" 
-            BorderColor="#999999" BorderStyle="None" BorderWidth="1px" 
-            DataKeyNames="發文編號" onrowdeleting="GridView_愛情_RowDeleting" AllowPaging="True" 
-               onpageindexchanging="GridView_愛情_PageIndexChanging" 
-                 onrowdatabound="GridView_愛情_RowDataBound">
-               <Columns>
-                   <asp:TemplateField HeaderText="標題">
-                       <ItemTemplate>
-                           <asp:HyperLink ID="HyperLink1" runat="server" 
-                               NavigateUrl='<%# Eval("發文編號", "Look.aspx?SuppNumb={0}") %>' 
-                               Text='<%# Eval("主旨") %>'></asp:HyperLink>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("暱稱") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label1" runat="server" Text='<%# Bind("暱稱") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("時間") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label2" runat="server" Text='<%# Bind("時間") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-                   <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
-                       <EditItemTemplate>
-                           <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("最後回覆") %>'></asp:TextBox>
-                       </EditItemTemplate>
-                       <ItemTemplate>
-                           <asp:Label ID="Label3" runat="server" Text='<%# Bind("最後回覆") %>'></asp:Label>
-                       </ItemTemplate>
-                   </asp:TemplateField>
-            </Columns>
-            <AlternatingRowStyle BackColor="#DCDCDC" />
-            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
-            <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-            <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
-            <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="#0000A9" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#000065" />                 
-        </asp:GridView>
-      </td>
-      </tr>
-        </table>
+            <td align="center" class="style17">
+                <span class="badge badge-success backgroundGreen">動作片</span>
+                <asp:GridView ID="GridView_動作" runat="server" 
+                    CssClass="mGrid"
+                    AutoGenerateColumns="False"
+                    CellPadding="3" 
+                    GridLines="Vertical" 
+                    Width="1100px" 
+                    DataKeyNames="Id" 
+                    OnRowDeleting="GridView_動作_RowDeleting" 
+                    AllowPaging="True"
+                    OnPageIndexChanging="GridView_動作_PageIndexChanging"
+                    OnRowDataBound="GridView_動作_RowDataBound">
+                    <Columns>
+                        <asp:TemplateField HeaderText="標題">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="HyperLink1" runat="server"
+                                    NavigateUrl='<%# Eval("Id", "Look.aspx?SuppNumb={0}") %>'
+                                    Text='<%# Eval("title") %>'></asp:HyperLink>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" class="style17">
+                <span class="badge badge-primary backgrounddeepskyblue">愛情片</span>
+                <asp:GridView ID="GridView_愛情" runat="server" 
+                    CssClass="mGrid"
+                    AutoGenerateColumns="False"
+                    CellPadding="3"
+                    GridLines="Vertical"
+                    Width="1100px" 
+                 
+                    DataKeyNames="Id" 
+                    OnRowDeleting="GridView_愛情_RowDeleting" AllowPaging="True"
+                    OnPageIndexChanging="GridView_愛情_PageIndexChanging"
+                    OnRowDataBound="GridView_愛情_RowDataBound">
+                    <Columns>
+                        <asp:TemplateField HeaderText="標題">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="HyperLink1" runat="server"
+                                    NavigateUrl='<%# Eval("Id", "Look.aspx?SuppNumb={0}") %>'
+                                    Text='<%# Eval("title") %>'></asp:HyperLink>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="作者" SortExpression="暱稱">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Name") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="發文時間" SortExpression="時間">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("CreateTime") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="最後回覆" SortExpression="最後回覆">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:TextBox>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("LastReplyTime") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </td>
+        </tr>
+    </table>
 </asp:Content>
 

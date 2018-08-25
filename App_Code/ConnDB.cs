@@ -47,7 +47,7 @@ public class ConnDB : IConnDB
             result = "資料庫執行發生錯誤:" + ex.Message;
         }
 
-        CloseSQL();
+        //CloseSQL();
         cmd.Dispose();
         cmd = null;
         return result;
@@ -70,7 +70,7 @@ public class ConnDB : IConnDB
             string ErrorMsg = ex.Message;
         }
 
-        CloseSQL();
+        //CloseSQL();
         ad.Dispose();
         ad = null;
 
