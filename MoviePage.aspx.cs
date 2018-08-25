@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.IO;
-public partial class 文章列表 : System.Web.UI.Page
+public partial class MoviePage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {

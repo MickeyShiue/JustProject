@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
 using System.Data;
-using DTO;
 
-
-public class ConnDB
+public class ConnDB : IConnDB
 {
-    SqlConnection SqlConn = new SqlConnection();
-    string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["JustConnectionString"].ConnectionString;
-    public DataTable dt;
+    private readonly SqlConnection SqlConn;
+    private DataTable dt;
 
     public ConnDB()
     {
         try
         {
-            SqlConn.ConnectionString = ConnectionString;
+            SqlConn = new SqlConnection();
+            SqlConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["JustConnectionString"].ConnectionString;
             SqlConn.Open();
-
         }
         catch (Exception ex)
         {
@@ -38,6 +32,28 @@ public class ConnDB
         return LoadTable_SQL(sqlStr);
     }
 
+    //介面實作
+    public string RunSqlStr(string sqlStr)
+    {
+        string result = string.Empty;
+        SqlCommand cmd = new SqlCommand(sqlStr);
+        try
+        {
+            int RowCount = cmd.ExecuteNonQuery();
+            result = "Success，執行成功!";
+        }
+        catch (Exception ex)
+        {
+            result = "資料庫執行發生錯誤:" + ex.Message;
+        }
+
+        CloseSQL();
+        cmd.Dispose();
+        cmd = null;
+        return result;
+    }
+
+    //介面實作
     public DataTable LoadTable_SQL(string sqlStr)
     {
         DataTable dt = new DataTable();
@@ -159,20 +175,6 @@ public class ConnDB
         dt = conns.LoadTable_SQL(str, "");
         return dt;
     }
-    public IEnumerable<HotLinkDTO> HotSrc(string SortNumber)
-    {        
-        string str = string.Format("select 'linkbtn'+Convert(varchar,Sort) as Sort, title , src from HotLink where Sort IN({0})", SortNumber);
-        var dt  = LoadTable_SQL(str, SortNumber);
-
-        List<HotLinkDTO> hotLinkDTOs = dt.AsEnumerable().Select(x => new HotLinkDTO()
-        {
-            Sort = x.Field<string>("Sort"),
-            title = x.Field<string>("title"),
-            src = x.Field<string>("src"),
-        }).ToList();
-
-        return hotLinkDTOs;
-    }
 
     public string getHotlinkcnt()
     {
@@ -214,4 +216,6 @@ public class ConnDB
         return str;
     }
 
+
+   
 }
