@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="Styles/Grid.css">
 </asp:Content>
 
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
      <table align="center" style="width: 1200px">
         <tr>
@@ -34,7 +33,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="電影名稱" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?SuppNumb={0}") %>' Text='<%# Eval("title") %>'></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?Id={0}") %>' Text='<%# Eval("title") %>'></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="發布者" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center">
@@ -78,7 +77,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="電影名稱" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?SuppNumb={0}")%>' Text='<%# Eval("title") %>'></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?Id={0}")%>' Text='<%# Eval("title") %>'></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="發布者" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center">
@@ -113,7 +112,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="電影名稱" ItemStyle-Width="20%" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?SuppNumb={0}")%>' Text='<%# Eval("title") %>'></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Id", "MovieDetail.aspx?Id={0}")%>' Text='<%# Eval("title") %>'></asp:HyperLink>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="發布者" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center">
