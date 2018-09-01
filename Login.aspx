@@ -1,79 +1,179 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Member_Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style type="text/css">
-        .style32 {
-            width: 40%;
-            height: 30px;
-            text-align: center;
+    <style>
+        @media (min-width: 768px) {
+            .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+                margin-left: 25%;
+            }
         }
 
-        .style33 {
-            height: 30px;
-            width: 60%;
+        .omb_login .omb_authTitle {
+            text-align: center;
+            line-height: 300%;
+        }
+
+        .omb_login .omb_socialButtons a {
+            color: white;
+            // In yourUse @body-bg opacity:0.9;
+        }
+
+            .omb_login .omb_socialButtons a:hover {
+                color: white;
+                opacity: 1;
+            }
+
+        .omb_login .omb_socialButtons .omb_btn-facebook {
+            background: #3b5998;
+        }
+
+        .omb_login .omb_socialButtons .omb_btn-twitter {
+            background: #00aced;
+        }
+
+        .omb_login .omb_socialButtons .omb_btn-google {
+            background: #c32f10;
+        }
+
+
+        .omb_login .omb_loginOr {
+            position: relative;
+            font-size: 1.5em;
+            color: #aaa;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+        }
+
+            .omb_login .omb_loginOr .omb_hrOr {
+                background-color: #cdcdcd;
+                height: 1px;
+                margin-top: 0px !important;
+                margin-bottom: 0px !important;
+            }
+
+            .omb_login .omb_loginOr .omb_spanOr {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: -0.6em;
+                margin-left: -1.5em;
+                background-color: white;
+                width: 3em;
+                text-align: center;
+            }
+
+        .omb_login .omb_loginForm .input-group.i {
+            width: 2em;
+        }
+
+        .omb_login .omb_loginForm .help-block {
+            color: red;
+        }
+
+
+        @media (min-width: 768px) {
+            .omb_login .omb_forgotPwd {
+                text-align: right;
+                margin-top: 10px;
+            }
         }
     </style>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-<center>
-    <table style="background-image: url('image/會員登入table.jpg'); width: 800px; height: 600px;">
-        <tr>
-            <td>
-                <table align="center" width="80%">
-                    <tr>
-                    <td width="25%">
-                    </td>
-                        <td>
-                            <asp:Image ID="Image1" runat="server" ImageUrl="~/image/圖示/會員登入.jpg" />
-                        </td>
-                    </tr>
-                </table>
-                <table align="center" border="2" width="80%">
-                    <tr>
-                        <td class="style32">
-                            <asp:Label ID="Label2" runat="server"
-                                Style="font-size: large; font-weight: 700" Text="帳號"></asp:Label>
-                        </td>
-                        <td class="style33">
-                            <asp:TextBox ID="TextBox_Id" runat="server" ForeColor="Red" Height="80%"
-                                ></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="style32">
-                            <asp:Label ID="Label3" runat="server" Text="密碼"
-                                Style="font-size: large; font-weight: 700"></asp:Label>
-                        </td>
-                        <td class="style33">
-                            <asp:TextBox ID="TextBox_Pwd" runat="server" ForeColor="Red"
-                                TextMode="Password" Height="80%"
-                                ></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <table width="100%">
-                                <tr align="center">
-                                    <td width="50%">
-                                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click"
-                                            Style="font-size: large; font-weight: 700" Text="申請會員" />
-                                    </td>
-                                    <td width="50%">
-                                        <asp:Button ID="Button_Login" runat="server" Text="登入"
-                                            OnClick="Button_Login_Click1" Style="font-size: large; font-weight: 700" />
-                                    </td>
-                                </tr>
-                                <tr align="center">
-                                    <td colspan="2">
-                                        <asp:Label ID="Label_Message" runat="server" Style="font-size: medium"></asp:Label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    </center>
+
+
+
+
+    <div class="container">
+        <div class="omb_login">
+            <h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
+            <div class="row omb_row-sm-offset-3 omb_socialButtons">
+                <div class="col-xs-4 col-sm-2">
+                    <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                        <i class="fa fa-facebook visible-xs"></i>
+                        <span class="hidden-xs">Facebook</span>
+                    </a>
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+                        <i class="fa fa-twitter visible-xs"></i>
+                        <span class="hidden-xs">Twitter</span>
+                    </a>
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                        <i class="fa fa-google-plus visible-xs"></i>
+                        <span class="hidden-xs">Google+</span>
+                    </a>
+
+                </div>
+            </div>
+            <div class="row omb_row-sm-offset-3 omb_loginOr">
+                <div class="col-xs-12 col-sm-6">
+                    <hr class="omb_hrOr">
+                    <span class="omb_spanOr">or</span>
+                </div>
+            </div>
+            <div class="row omb_row-sm-offset-3">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input id="Account" runat="server" type="text" class="form-control" autocomplete="off" name="Account" placeholder="email address" />
+                    </div>
+                    <span class="help-block"></span>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input id="Password" runat="server" type="password" class="form-control" autocomplete="off" name="Password" placeholder="Password" />
+                    </div>
+                    <span class="help-block">Password error</span>
+                    <asp:Button ID="btnLogin" class="btn btn-lg btn-primary btn-block" runat="server" Text="Login" OnClick="btnLogin_Click" />
+                </div>
+            </div>
+
+            <div class="row omb_row-sm-offset-3">
+                <div class="col-xs-12 col-sm-3">
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <p class="omb_forgotPwd">
+                        <a href="#">Forgot password?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-- <asp:HiddenField ID="AlertTitle" runat="server" />
+      <asp:HiddenField ID="AlertContent" runat="server" />
+      <asp:HiddenField ID="AlertType" runat="server" />--%>
+
+    <input type="hidden" id="AlertTitle" value="" runat="server" />
+    <input type="hidden" id="AlertContent" value="" runat="server" />
+    <input type="hidden" id="AlertType" value="" runat="server" />
+
+    <%--   <asp:TextBox ID="AlertTitle" runat="server" Style="display:none"></asp:TextBox>
+       <asp:TextBox ID="AlertContent" runat="server" Style="display:none"></asp:TextBox>
+       <asp:TextBox ID="AlertType" runat="server" Style="display:none"></asp:TextBox>--%>
+
+
+
+    <script>
+        $(function () {
+            let AlertTitle = $('#ContentPlaceHolder1_AlertTitle').val();
+            let AlertContent = $('#ContentPlaceHolder1_AlertContent').val();
+            let AlertType = $('#ContentPlaceHolder1_AlertType').val();
+
+            //如果Alert 沒有資訊就不彈出視窗
+            if (AlertTitle !== "" || AlertContent !== "" || AlertType !== "")
+                swal(AlertTitle, AlertContent, AlertType);
+        })
+
+    </script>
+
+
 </asp:Content>
+

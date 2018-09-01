@@ -9,7 +9,9 @@ using System.Web;
 /// </summary>
 public interface IConnDB
 {
-     DataTable LoadTable_SQL(string sqlStr);
+    DataTable LoadTable_SQL(string sqlStr);
 
-     string RunSqlStr(string sqlStr);
+    DataTable LoadTable_SQL(string sqlStr, IDictionary<string, string> SqlParameter);
+
+    string RunSqlStr(string sqlStr);
 }

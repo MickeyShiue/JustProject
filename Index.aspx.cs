@@ -4,7 +4,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-public partial class FirsrPage : System.Web.UI.Page
+public partial class Index : System.Web.UI.Page
 { 
     private DataTable dt;
     private readonly IHotLinkService _HotLinkService;
@@ -17,7 +17,7 @@ public partial class FirsrPage : System.Web.UI.Page
         }
     }
 
-    public FirsrPage()//沒導入DI 容器，勉強這樣做
+    public Index()//沒導入DI 容器，勉強這樣做
     {
         _HotLinkService = new HotLinkService(new ConnDB());
     }

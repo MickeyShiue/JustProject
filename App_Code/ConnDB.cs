@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections.Generic;
 
 public class ConnDB : IConnDB
 {
@@ -76,6 +77,35 @@ public class ConnDB : IConnDB
 
         return dt;
     }
+
+    public DataTable LoadTable_SQL(string sqlStr, IDictionary<string, string> SqlParameter)
+    {
+        DataTable dt = new DataTable();
+        SqlDataAdapter ad = new SqlDataAdapter();
+        SqlCommand cmd = new SqlCommand(sqlStr, SqlConn);
+        foreach (var item in SqlParameter)
+        {
+            cmd.Parameters.AddWithValue(item.Key, item.Value);
+        }
+
+        try
+        {
+            ad.SelectCommand = cmd;
+            ad.Fill(dt);
+        }
+        catch (Exception ex)
+        {
+            string ErrorMsg = ex.Message;
+        }
+
+        //CloseSQL();
+        ad.Dispose();
+        ad = null;
+
+        return dt;
+    }
+
+
 
 
 
@@ -217,5 +247,4 @@ public class ConnDB : IConnDB
     }
 
 
-   
 }

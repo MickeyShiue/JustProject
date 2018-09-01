@@ -9,46 +9,11 @@ using System.Data.SqlClient;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
-     protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
     {
-        //    try
-        //{
-        //    if (Session["帳號"] == null)
-        //    {
-        //        foreach (MenuItem item in Menu1.Items)
-        //        {
-        //            if (item.Text == "會員專區")
-        //                item.Enabled = false;
-        //            if (item.Text == "會員登入")
-        //                item.Enabled = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        foreach (MenuItem item in Menu1.Items)
-        //        {
-        //            if (item.Text == "會員專區")
-        //                item.Enabled = true;
-        //            if (item.Text == "會員登入")
-        //                item.Enabled = false;
-        //        }
-        //    }
-        //}
-        //catch
-        //{
-
-        //}
-    }
-    protected void LinkButton_Login_Click(object sender, EventArgs e)
-    {
-        //if (Session.Count > 1)
-        //{
-        //    Session.Clear();
-        //    Response.Redirect("FirstPage.aspx");
-        //}
-        //else
-        //{
-        //    Response.Redirect("Login.aspx");
-        //}
+        if (1 == 1)
+        {
+            IsLoginMenu.Visible = true;
+        }
     }
 }

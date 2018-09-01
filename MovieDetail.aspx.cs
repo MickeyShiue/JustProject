@@ -14,11 +14,6 @@ using DTO;
 
 public partial class MovieDetail : System.Web.UI.Page
 {
-
-    DataTable timeDt = new DataTable();
-    ConnDB conns = new ConnDB();
-    string dtn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
     private readonly IArticleService _ArticleService;
 
     public MovieDetail()
@@ -58,8 +53,7 @@ public partial class MovieDetail : System.Web.UI.Page
 
         ArticleDTO _ArticleDTO = _ArticleService.GetArticleById(Querystring);
         if (_ArticleDTO != null)
-        {
-            //MoviePlay.Attributes.Add("YoutubeUrl", _ArticleDTO.YoutubeUrl);
+        {           
             MoviePlay.Attributes.Add("src", _ArticleDTO.YoutubeUrl);
             this.Label_Contents.Text = _ArticleDTO.Content;
         }
@@ -71,6 +65,4 @@ public partial class MovieDetail : System.Web.UI.Page
         ArticleDTO _ArticleDTO = _ArticleService.GetArticleById(Querystring);
         Images.ImageUrl = _ArticleDTO.ImagePath; ;
     }
-
- 
 }
