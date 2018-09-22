@@ -4,7 +4,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-public partial class Index : System.Web.UI.Page
+public partial class Index : BasePage
 { 
     private DataTable dt;
     private readonly IHotLinkService _HotLinkService;
@@ -22,9 +22,8 @@ public partial class Index : System.Web.UI.Page
         _HotLinkService = new HotLinkService(new ConnDB());
     }
 
-
     protected void Page_Load(object sender, EventArgs e)
-    {      
+    {
         string listHotSortNum = string.Empty;
 
         if (!IsPostBack)

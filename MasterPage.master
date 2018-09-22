@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -46,7 +47,7 @@
                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                           <ul class="nav navbar-nav">
                             <li><a href="/Index.aspx">首頁</a></li> 
-                            <li class="dropdown">
+                            <li class="dropdown" id="IsShareMenu" runat="server">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">分享區 <b class="caret"></b></a>
                               <ul class="dropdown-menu">
                                 <li><a href="/MoviePage.aspx">電影版</a></li>
@@ -56,13 +57,13 @@
                             </li>
                               <li><a href="/bulletin.aspx">最新消息</a></li>
                               <li><a href="/help.aspx">幫助</a></li>
-                              <li><a href="/Login.aspx">會員登入</a></li>
-                           <li id="IsLoginMenu" class="dropdown" runat="server">
+                              <li id="IsLoginTag" runat="server"><a href="/Login.aspx">會員登入</a></li>
+                           <li id="IsMemberMenu" class="dropdown" runat="server">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">會員專區 <b class="caret"></b></a>
                               <ul class="dropdown-menu">
                                 <li><a href="/Update.aspx">會員資料</a></li>
                                 <li><a href="/Share.aspx">影音上傳</a></li>
-                                <li><a href="/Out.aspx">會員登出</a></li>
+                                <li><a href="/SignOut.aspx">會員登出</a></li>
                               </ul>
                            </li>
                           </ul>

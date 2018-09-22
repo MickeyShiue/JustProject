@@ -12,10 +12,11 @@ using System.IO;
 using DTO;
 using System.Web.Security;
 
-public partial class Login : System.Web.UI.Page
+public partial class Login : BasePage
 {
     private readonly IUserService _IUserService;
 
+    #region ModelStateIsValid
     private bool ModelStateIsValid
     {
         get
@@ -27,7 +28,9 @@ public partial class Login : System.Web.UI.Page
             return false;
         }
     }
+    #endregion
 
+    #region _Account
     public string _Account
     {
         get
@@ -35,7 +38,9 @@ public partial class Login : System.Web.UI.Page
             return Request.Form["ctl00$ContentPlaceHolder1$Account"];
         }
     }
+    #endregion
 
+    #region _Password
     public string _Password
     {
         get
@@ -43,13 +48,16 @@ public partial class Login : System.Web.UI.Page
             return Request.Form["ctl00$ContentPlaceHolder1$Password"];
         }
     }
+    #endregion
 
-    private enum AlertStatus
+    #region Enum_AlertStatus
+    private enum Enum_AlertStatus
     {
         error = 0,
         success = 1,
         warning = 2
     }
+    #endregion
 
     public Login()
     {
@@ -58,7 +66,10 @@ public partial class Login : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (IsLogin)
+        {
+            Response.Redirect("Index.aspx");
+        }
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
@@ -72,11 +83,11 @@ public partial class Login : System.Web.UI.Page
 
             if (userinfo == null)
             {
-                SetAlertMsg(AlertStatus.error);
+                SetAlertMsg(Enum_AlertStatus.error);
             }
             else
             {
-                string userData = string.Format("Account={0};Name={1};Authority={2};Status={3};LoginTime={4};",
+                string userData = string.Format("Account={0};Name={1};Authority={2};Status={3};LoginTime={4}",
                                         userinfo.Account,
                                         userinfo.Name,
                                         userinfo.Authority.ToString(),
@@ -87,37 +98,36 @@ public partial class Login : System.Web.UI.Page
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(fat));
                 cookie.HttpOnly = true;
                 Response.Cookies.Add(cookie);
-                SetAlertMsg(AlertStatus.success);
+                SetAlertMsg(Enum_AlertStatus.success);
             }
         }
         else
         {
-            SetAlertMsg(AlertStatus.warning);
+            SetAlertMsg(Enum_AlertStatus.warning);
         }
     }
 
-    private void SetAlertMsg(AlertStatus status)
+    private void SetAlertMsg(Enum_AlertStatus status)
     {
         switch (status)
         {
-            case AlertStatus.error:
+            case Enum_AlertStatus.error:
                 AlertTitle.Value = "錯誤";
                 AlertContent.Value = "帳號密碼錯誤!!";
                 AlertType.Value = "error";
                 break;
 
-            case AlertStatus.success:
+            case Enum_AlertStatus.success:
                 AlertTitle.Value = "成功";
                 AlertContent.Value = "登入成功";
                 AlertType.Value = "success";
                 break;
 
-            case AlertStatus.warning:
+            case Enum_AlertStatus.warning:
                 AlertTitle.Value = "提醒";
                 AlertContent.Value = "請確實輸入帳號密碼!!";
                 AlertType.Value = "warning";
                 break;
         }
     }
-
 }

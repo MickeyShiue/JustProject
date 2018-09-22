@@ -15,7 +15,6 @@
 
         .omb_login .omb_socialButtons a {
             color: white;
-            // In yourUse @body-bg opacity:0.9;
         }
 
             .omb_login .omb_socialButtons a:hover {
@@ -86,10 +85,6 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
-
-
-
     <div class="container">
         <div class="omb_login">
             <h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
@@ -147,33 +142,30 @@
             </div>
         </div>
     </div>
-    <%-- <asp:HiddenField ID="AlertTitle" runat="server" />
-      <asp:HiddenField ID="AlertContent" runat="server" />
-      <asp:HiddenField ID="AlertType" runat="server" />--%>
+
 
     <input type="hidden" id="AlertTitle" value="" runat="server" />
     <input type="hidden" id="AlertContent" value="" runat="server" />
     <input type="hidden" id="AlertType" value="" runat="server" />
-
-    <%--   <asp:TextBox ID="AlertTitle" runat="server" Style="display:none"></asp:TextBox>
-       <asp:TextBox ID="AlertContent" runat="server" Style="display:none"></asp:TextBox>
-       <asp:TextBox ID="AlertType" runat="server" Style="display:none"></asp:TextBox>--%>
-
-
 
     <script>
         $(function () {
             let AlertTitle = $('#ContentPlaceHolder1_AlertTitle').val();
             let AlertContent = $('#ContentPlaceHolder1_AlertContent').val();
             let AlertType = $('#ContentPlaceHolder1_AlertType').val();
-
             //如果Alert 沒有資訊就不彈出視窗
-            if (AlertTitle !== "" || AlertContent !== "" || AlertType !== "")
-                swal(AlertTitle, AlertContent, AlertType);
+            if (AlertTitle !== "" || AlertContent !== "" || AlertType !== "") {
+                swal({
+                    title: AlertTitle,
+                    text: AlertContent,
+                    type: AlertType
+                }).then(function () {
+                    if (AlertType === "success") {
+                       window.location = "Index.aspx";
+                    }
+                });
+            }
         })
-
     </script>
-
-
 </asp:Content>
 
