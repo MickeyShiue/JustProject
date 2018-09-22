@@ -9,14 +9,6 @@ public partial class Index : BasePage
     private DataTable dt;
     private readonly IHotLinkService _HotLinkService;
 
-    private string SessionAccount
-    {
-        get
-        {
-            return Session["帳號"] != null ? Session["帳號"].ToString() : "";
-        }
-    }
-
     public Index()//沒導入DI 容器，勉強這樣做
     {
         _HotLinkService = new HotLinkService(new ConnDB());

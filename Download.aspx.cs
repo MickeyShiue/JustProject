@@ -13,8 +13,7 @@ using System.IO;
 public partial class Download : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
-    {
-        //if (Session["AA"] == null) { Response.Redirect("Home.aspx"); }
+    {      
         ArrayList dataArray = new ArrayList();
         string[] data;
         data = Directory.GetFiles(Server.MapPath("~/上傳資料夾"));
@@ -35,7 +34,7 @@ public partial class Download : System.Web.UI.Page
         foreach (string item in data)
         {
             string[] strArray = item.Split('\\');
-            if (select == strArray[6])
+            if (select == strArray[strArray.Length-1])
             {
                 string FileName = this.FineName_TextBox.Text;
                 Response.ContentType = "application/octet-stream";

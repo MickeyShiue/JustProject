@@ -15,6 +15,15 @@
             }
         }
     </script>
+
+    <style>
+        .MovieMenu{
+            padding-top:25px;
+            padding-left:80px;
+            padding-bottom:25px;
+        }
+    </style>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -24,20 +33,18 @@
                 <asp:Image Width="100%" ID="Image1" runat="server" ImageUrl="~/image/環太平洋gif.gif" />
             </td>
             <td align="center" width="50%">
-               <%-- <iframe runat="server" id="MoviePlay" width="834" height="595" src="https://www.youtube.com/embed/0CmsVuvtqSM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>--%>
-                 <iframe runat="server" id="MoviePlay" width="834" height="595" src="https://www.youtube.com/embed/0CmsVuvtqSM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe runat="server" id="MoviePlay" width="834" height="595" src="https://www.youtube.com/embed/0CmsVuvtqSM?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+             <%--    <iframe runat="server" id="MoviePlay" width="834" height="595" src="https://www.youtube.com/embed/0CmsVuvtqSM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>--%>
             </td>
             <td width="25%">
                 <asp:Image Width="100%" ID="Image2" runat="server" ImageUrl="~/image/復仇者聯盟2gif.gif" />
             </td>
         </tr>
-    </table>
-    <table width="80%" border="1" align="center" style="background-image: url(image/test.jpg)">
-        <tr>
-            <td style="width: 20%; border: 5;">
+            <tr>
+            <td style="width: 25%; border:1px">
                 <table>
                     <tr align="center">
-                        <td>
+                        <td class="MovieMenu">
                             <asp:Image ID="Image3" runat="server" ImageUrl="~/image/圖示/熱門影片預告.jpg" />
                             <br />
                             <asp:Panel ID="Panel_link" runat="server">
@@ -98,30 +105,12 @@
                     </tr>
                 </table>
             </td>
-            <td align="center" width="80%">
-                <table width="100%">
-                    <tr style="width: 100%">
-                        <td align="center">
-                            <br />
-                            <asp:Label ID="lbl_mov_top10" runat="server" Text="最新發表" Font-Size="18"></asp:Label><br />
-                            <br />
-                            <asp:Table ID="TB_mov_top10" runat="server">
-                            </asp:Table>
-                        </td>
-                    </tr>
-                </table>
+            <td width="50%">
+               
+            </td>
+            <td width="25%">
+
             </td>
         </tr>
-    </table>
-    <hr />
-    <table width="65%" border="1" align="center" style="background-image: url(image/環太平洋table1.jpg)">
-        <tr align="center" style="width: 100%">
-            <td id="mastersuggest" runat="server">
-                <asp:Image ID="Image10" runat="server" ImageUrl="~/image/圖示/站長推薦.jpg" />
-                <asp:Table ID="tbl_mastersug" runat="server">
-                </asp:Table>
-                <br />
-            </td>
-        </tr>
-    </table>
+    </table>  
 </asp:Content>
