@@ -34,7 +34,6 @@
             background: #c32f10;
         }
 
-
         .omb_login .omb_loginOr {
             position: relative;
             font-size: 1.5em;
@@ -83,14 +82,13 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
         <div class="omb_login">
             <h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
             <div class="row omb_row-sm-offset-3 omb_socialButtons">
                 <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                    <a href="~/FacebookLogin.aspx" class="btn btn-lg btn-block omb_btn-facebook" runat="server"  OnClick="FBLogin_Click">
                         <i class="fa fa-facebook visible-xs"></i>
                         <span class="hidden-xs">Facebook</span>
                     </a>
@@ -102,11 +100,11 @@
                     </a>
                 </div>
                 <div class="col-xs-4 col-sm-2">
-                    <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                    <a href="GoogleLogin.aspx" class="btn btn-lg btn-block omb_btn-google">
                         <i class="fa fa-google-plus visible-xs"></i>
                         <span class="hidden-xs">Google+</span>
                     </a>
-
+                  
                 </div>
             </div>
             <div class="row omb_row-sm-offset-3 omb_loginOr">
@@ -126,7 +124,7 @@
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                         <input id="Password" runat="server" type="password" class="form-control" autocomplete="off" name="Password" placeholder="Password" />
                     </div>
-                    <span class="help-block">Password error</span>
+                    <span class="help-block"></span>
                     <asp:Button ID="btnLogin" class="btn btn-lg btn-primary btn-block" runat="server" Text="Login" OnClick="btnLogin_Click" />
                 </div>
             </div>
@@ -136,13 +134,12 @@
                 </div>
                 <div class="col-xs-12 col-sm-3">
                     <p class="omb_forgotPwd">
-                        <a href="#">Forgot password?</a>
+                        <a href="#"></a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
-
 
     <input type="hidden" id="AlertTitle" value="" runat="server" />
     <input type="hidden" id="AlertContent" value="" runat="server" />

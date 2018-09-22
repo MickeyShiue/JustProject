@@ -52,7 +52,6 @@
                               <ul class="dropdown-menu">
                                 <li><a href="/MoviePage.aspx">電影版</a></li>
                                 <li><a href="/Download.aspx">影音下載</a></li>
-                                <li><a href="/Select.aspx">文章搜尋</a></li>
                               </ul>
                             </li>
                               <li><a href="/bulletin.aspx">最新消息</a></li>
@@ -61,9 +60,7 @@
                            <li id="IsMemberMenu" class="dropdown" runat="server">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">會員專區 <b class="caret"></b></a>
                               <ul class="dropdown-menu">
-                                <li><a href="/Update.aspx">會員資料</a></li>
-                                <li><a href="/Share.aspx">影音上傳</a></li>
-                                <li><a href="/SignOut.aspx">會員登出</a></li>
+                                <li><a href="/SignOut.aspx">登出</a></li>
                               </ul>
                            </li>
                           </ul>

@@ -7,3 +7,5 @@ MovieImage/
 字型/CRY7.TTC
 JustProject.sln
 .vs/
+packages/
+packages.config

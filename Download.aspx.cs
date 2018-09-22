@@ -10,42 +10,50 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.IO;
 
-public partial class Download : System.Web.UI.Page
+public partial class Download : BasePage
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {      
-        ArrayList dataArray = new ArrayList();
-        string[] data;
-        data = Directory.GetFiles(Server.MapPath("~/上傳資料夾"));
-
-        foreach (string item in data)
-        {
-            dataArray.Add(new FileInfo(item));
-        }
-        this.GridView1.DataSource = dataArray;
-        this.GridView1.DataBind();
-    }
-    protected void Button1_Click(object sender, EventArgs e)
+    public string DownLoadFileName
     {
-        string select = FineName_TextBox.Text.Trim();
-        string[] data;
-        data = Directory.GetFiles(Server.MapPath("~/上傳資料夾"));
-
-        foreach (string item in data)
+        get
         {
-            string[] strArray = item.Split('\\');
-            if (select == strArray[strArray.Length-1])
-            {
-                string FileName = this.FineName_TextBox.Text;
-                Response.ContentType = "application/octet-stream";
-                Response.AppendHeader("content-disposition", "attachment;FileName=" + FileName);
-                Response.TransmitFile(Server.MapPath("~/上傳資料夾/" + FileName));
-                Response.End();
-                LabeMessage.Visible = false;
-                return;
-            }
+            return Request.QueryString["FileName"] != null ? Request.QueryString["FileName"] : null;
         }
-        LabeMessage.Visible = true;
-        LabeMessage.Text = "上未輸入下載檔案名稱";
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!IsLogin)
+        {
+            Response.Redirect("Index.aspx");
+        }
+
+        if (DownLoadFileName != null)
+        {
+            DownLoad();
+        }
+
+        var FileInfo = Directory.GetFiles(Server.MapPath("~/MovieImage"));
+        for (int i = 0; i < FileInfo.Length; i++)
+        {
+            var ItemInfo = FileInfo[i].Split('\\');
+
+            string FolderName = ItemInfo[3];
+            string FileName = ItemInfo[4];
+
+            Image img = new Image();
+            img.ImageUrl = string.Format("{0}/{1}", FolderName, FileName);
+            img.ID = FileName;
+            img.CssClass = "imgclick";
+            this.Mycontainer.Controls.Add(img);
+        }
+
+    }
+
+    private void DownLoad()
+    {
+        Response.ContentType = "application/octet-stream";
+        Response.AppendHeader("content-disposition", "attachment;FileName=" + DownLoadFileName);
+        Response.TransmitFile(Server.MapPath("~/MovieImage/" + DownLoadFileName));
+        Response.End();
     }
 }

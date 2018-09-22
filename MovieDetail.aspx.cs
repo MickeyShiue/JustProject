@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Text;
-using System.IO;
-using System.Web.SessionState;
 using DTO;
 
-public partial class MovieDetail : System.Web.UI.Page
+public partial class MovieDetail : BasePage
 {
     private readonly IArticleService _ArticleService;
 
@@ -29,25 +18,13 @@ public partial class MovieDetail : System.Web.UI.Page
         }
     }
 
-    public string Account
-    {
-        get
-        {
-            return Session["帳號"] == null ? "" : Session["帳號"].ToString();
-        }
-    }
-
-    public string Name
-    {
-        get
-        {
-            return Session["暱稱"] == null ? "" : Session["暱稱"].ToString();
-        }
-
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsLogin)
+        {
+            Response.Redirect("Index.aspx");
+        }
+
         if (string.IsNullOrEmpty(Querystring))
             Response.Redirect("MoviePage.aspx");
 
@@ -57,7 +34,6 @@ public partial class MovieDetail : System.Web.UI.Page
             MoviePlay.Attributes.Add("src", _ArticleDTO.YoutubeUrl);
             this.Label_Contents.Text = _ArticleDTO.Content;
         }
-
     }
 
     protected void Images_Load(object sender, EventArgs e)
