@@ -12,7 +12,6 @@ using System.IO;
 public partial class MoviePage : BasePage
 {
     private readonly IArticleService _ArticleService;
-    private DataTable dt;
 
     public MoviePage()
     {
@@ -37,6 +36,4 @@ public partial class MoviePage : BasePage
         GridView_愛情.DataBind();
 
     }
-   
- 
 }

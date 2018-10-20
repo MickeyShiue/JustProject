@@ -16,8 +16,11 @@ public class ArticleService : IArticleService
 
     public IEnumerable<ArticleDTO> GetArticleByType(string MovieType)
     {
-        string str = string.Format("SELECT * FROM Article Where MovieType='{0}' ORDER BY LastReplyTime DESC ", MovieType);
-        DataTable dt = _coonDB.LoadTable_SQL(str);
+        string str = "SELECT * FROM Article WHERE MovieType=@MovieType ORDER BY LastReplyTime DESC";
+        IDictionary<string, string> SqlParameter = new Dictionary<string, string>();
+        SqlParameter.Add("@MovieType", MovieType);
+
+        DataTable dt = _coonDB.LoadTable_SQL(str, SqlParameter);
 
         List<ArticleDTO> _ArticleDTO = dt.AsEnumerable()
             .Select(x => new ArticleDTO()
@@ -40,8 +43,11 @@ public class ArticleService : IArticleService
 
     public ArticleDTO GetArticleById(string Id)
     {
-        string str = string.Format("SELECT * FROM Article WHERE Id='{0}'", Id);
-        DataTable dt = _coonDB.LoadTable_SQL(str);
+        string str = "SELECT * FROM Article WHERE Id=@Id";
+        IDictionary<string, string> SqlParameter = new Dictionary<string, string>();
+        SqlParameter.Add("@Id", Id);
+
+        DataTable dt = _coonDB.LoadTable_SQL(str, SqlParameter);
 
         ArticleDTO _ArticleDTO = dt.AsEnumerable()
                    .Select(x => new ArticleDTO()

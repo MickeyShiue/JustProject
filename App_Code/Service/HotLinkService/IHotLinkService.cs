@@ -9,5 +9,5 @@ using System.Web;
 /// </summary>
 public interface IHotLinkService
 {
-    IEnumerable<HotLinkDTO> GetHotSrc(string SortNumber);
+    IEnumerable<HotLinkDTO> GetHotSrc(List<string> listHotSortNum);
 }

@@ -37,8 +37,6 @@ public partial class GoogleAuthentication : System.Web.UI.Page
                 cookie.HttpOnly = true;
                 Response.Cookies.Add(cookie);
                 Response.Redirect("Index.aspx");
-
-
             }
         }
         else

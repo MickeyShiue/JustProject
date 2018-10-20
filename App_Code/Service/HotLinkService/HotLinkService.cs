@@ -17,17 +17,22 @@ public class HotLinkService :IHotLinkService
         this._coonDB = connDB;
     }
 
-    public IEnumerable<HotLinkDTO> GetHotSrc(string SortNumber)
+    public IEnumerable<HotLinkDTO> GetHotSrc(List<string> listHotSortNum)
     {
-        string str = string.Format("select 'linkbtn'+Convert(varchar,Sort) as Sort, title , src from HotLink where Sort IN({0})", SortNumber);
-        DataTable dt = _coonDB.LoadTable_SQL(str);
 
-        List<HotLinkDTO> _hotLinkDTO = dt.AsEnumerable().Select(x => new HotLinkDTO()
+        string sqlstr = "SELECT 'linkbtn'+Convert(VARCHAR,Sort) AS Sort,title,src FROM HotLink WHERE Sort BETWEEN @MIN AND @MAX ";
+        IDictionary<string, string> SqlParameter = new Dictionary<string, string>();
+        SqlParameter.Add("@MIN", listHotSortNum[0]);
+        SqlParameter.Add("@MAX", listHotSortNum[1]);
+
+        DataTable dt = _coonDB.LoadTable_SQL(sqlstr, SqlParameter);
+
+        IEnumerable<HotLinkDTO> _hotLinkDTO = dt.AsEnumerable().Select(x => new HotLinkDTO()
         {
             Sort = x.Field<string>("Sort"),
             title = x.Field<string>("title"),
             src = x.Field<string>("src"),
-        }).ToList();
+        });
 
         return _hotLinkDTO;
     }
