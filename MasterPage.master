@@ -29,7 +29,7 @@
             <tr>
                 <td>
                     <center>
-                        <Bewise:FlashControl ID="FlashControl1" runat="server" Height="150px" MovieUrl="~/image/title.swf" Loop="True" Width="1600px" />
+                        <Bewise:FlashControl ID="FlashControl1" runat="server" Height="150px" MovieUrl="~/flash/title.swf" Loop="True" Width="1600px" />
                     </center>
                 </td>
             </tr>
